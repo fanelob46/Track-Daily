@@ -1,17 +1,20 @@
-import express from 'express'
-import dotenv from "dotenv"
-import { connectDB } from './config/db.js';
-import userRoutes from './routes/userRoutes.js'
+import express from "express";
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.use('/api/users', userRoutes)
+app.use(cookieParser());
+
+app.use("/api/users", userRoutes);
 
 app.listen(5000, () => {
-    connectDB()
-    console.log("Server started at http://localhost:5000")
-})
+  connectDB();
+  console.log("Server started at http://localhost:5000");
+});
