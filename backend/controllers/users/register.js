@@ -1,4 +1,5 @@
 import User from "../../models/userModel.js";
+import generateToken from "../../utils/generateToken.js";
 
 export const registerUser = async (req, res) => {
   //get the user inputs
@@ -8,7 +9,7 @@ export const registerUser = async (req, res) => {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res
+    return res
       .status(400)
       .json({ success: false, message: "User email already exist" });
   }
@@ -23,6 +24,14 @@ export const registerUser = async (req, res) => {
 
   //checck if the user was created
   if (user) {
-    res.status(200).json({ success: true }).json({ message: "User created" });
+    generateToken(res, user._id);
+    res.status(201).json({
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+    });
+  } else {
+    res.status(400).json({ message: "invalid user data" });
   }
 };
