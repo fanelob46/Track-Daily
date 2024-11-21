@@ -4,6 +4,7 @@ import { loginUser } from "../controllers/users/login.js";
 import getUserProfile from "../controllers/users/getUserProfile.js";
 import { updateUserProfile } from "../controllers/users/update.js";
 import { protect } from "../middleware/authMiddleware.js";
+import logoutUser from "../controllers/users/logoutUser.js";
 
 const router = express.Router();
 
@@ -11,9 +12,13 @@ router.post("/", registerUser);
 router.post("/login", loginUser);
 
 //Update profile
-router.put('/profile',protect, updateUserProfile);
+router.put("/profile", protect, updateUserProfile);
+
+//Get profile
+router.get("/profile", protect, getUserProfile);
+
+// Logout user
+router.post("/logout", logoutUser);
 
 
-router.get("/profile",protect, getUserProfile);
 export default router;
-

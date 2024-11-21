@@ -4,7 +4,7 @@ import User from "../../models/userModel.js";
 // @desc Get logged in user's profile
 // route GET /api/users/profile
 // @access Private
-export const getUserProfile = async (req, res) => {
+const getUserProfile = async (req, res) => {
   const  id  = req.user._id;
   const stringId = id instanceof Buffer ? id.toString() : id;
 
