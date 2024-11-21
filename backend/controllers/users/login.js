@@ -18,6 +18,6 @@ export const loginUser = async (req, res) => {
       email: user.email,
     });
   } else {
-    res.status(401).json({ succes: false, message: "Invalid login details" });
+    res.status(401).json({ success: false, message: "Invalid login details" });
   }
 };

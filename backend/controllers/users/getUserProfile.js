@@ -4,11 +4,11 @@ import User from "../../models/userModel.js";
 // @desc Get logged in user's profile
 // route GET /api/users/profile
 // @access Private
-
 export const getUserProfile = async (req, res) => {
   // This will be replaced with the id of the logged in user
-  //   const {id} = req.user._id
-  const { id } = req.body;
+  console.log("user ", req.user);
+  const { id } = req.user._id;
+  //   const { id } = req.body;
 
   // Check if the ID exists in the database
   if (!mongoose.Types.ObjectId.isValid(id)) {

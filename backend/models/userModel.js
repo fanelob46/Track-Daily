@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-const userShema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -26,7 +26,7 @@ const userShema = new mongoose.Schema(
   }
 );
 
-userShema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -36,10 +36,10 @@ userShema.pre("save", async function (next) {
 });
 
 // Match user entered password to hashed password in database
-userShema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const User = mongoose.model("User", userShema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
