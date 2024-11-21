@@ -5,13 +5,11 @@ import User from "../../models/userModel.js";
 // route GET /api/users/profile
 // @access Private
 export const getUserProfile = async (req, res) => {
-  // This will be replaced with the id of the logged in user
-  console.log("user ", req.user);
-  const { id } = req.user._id;
-  //   const { id } = req.body;
+  const  id  = req.user._id;
+  const stringId = id instanceof Buffer ? id.toString() : id;
 
   // Check if the ID exists in the database
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!mongoose.Types.ObjectId.isValid(stringId)) {
     return res.status(404).json({
       success: false,
       message: "Invalid user ID",
@@ -20,7 +18,9 @@ export const getUserProfile = async (req, res) => {
 
   try {
     // From the database find the user by ID and store it in user
-    const user = await User.findById(id);
+    const user = await User.findById(stringId);
+    console.log('user ', user);
+    
 
     // If the user is not found
     if (!user) {
