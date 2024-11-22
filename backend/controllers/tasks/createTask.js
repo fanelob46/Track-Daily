@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Task from "../../models/tasksModel";
+import Task from "../../models/tasksModel.js";
 
 export const createTask = async (req, res) => {
     const task = req.body; //user will send this data
