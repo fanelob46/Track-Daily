@@ -18,8 +18,6 @@ router.put("/profile", protect, updateUserProfile);
 //Delete user profile
 router.delete("/:id", deleteUser);
 
-router.get("/profile", getUserProfile);
-
 //Get profile
 router.get("/profile", protect, getUserProfile);
 
