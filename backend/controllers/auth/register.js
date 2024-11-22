@@ -24,7 +24,7 @@ export const registerUser = async (req, res) => {
 
   //checck if the user was created
   if (user) {
-    generateToken(res, user._id);
+    generateToken(res, user._id, user.isAdmin);
     res.status(201).json({
       _id: user._id,
       firstName: user.firstName,
