@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Task from "../../models/tasksModel.js";
+import mongoose from "mongoose";
 
 // @desc Get logged in user's tasks
 // route GET /api/tasks
