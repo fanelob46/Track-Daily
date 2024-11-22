@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-const userShema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -26,6 +26,6 @@ const userShema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model("User", userShema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
