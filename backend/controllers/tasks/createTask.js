@@ -1,21 +1,25 @@
-import express from "express";
-import mongoose from "mongoose";
 import Task from "../../models/tasksModel.js";
 
 export const createTask = async (req, res) => {
-    const task = req.body; //user will send this data
+    const { title, description, date, tag, userId } = req.body;
+    console.log(req.body);
 
-    if (!task.name || !task.price || !task.image) {
-        return res.status(400).json({ success: false, message: "Please provide all fields" });
+    // Validate request body
+    if (!title || !description || !date || !tag || !userId) {
+        return res.status(400).json({ 
+            success: false, 
+            message: "All fields (title, description, date, tag) are required." 
+        });
     }
 
-    const newtask = new task(task)
+    const newTask = new Task({ title, description, date, tag, userId });
 
     try {
-        await newTask.save();
-        res.status(201).json({ success: true, data: newTask });
+        // Save the task to the database
+        const savedTask = await newTask.save();
+        res.status(201).json({ success: true, data: savedTask });
     } catch (error) {
-        console.error("Error in Create task:", error.message);
+        console.error("Error in creating task:", error.message);
         res.status(500).json({ success: false, message: "Server Error" });
     }
 };
