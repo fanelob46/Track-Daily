@@ -9,7 +9,7 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   //match the password with the one on the database
-  if (user && (await User.matchPassword(password))) {
+  if (user && (await user.matchPassword(password))) {
     generateToken(res, user._id);
 
     res.json({
