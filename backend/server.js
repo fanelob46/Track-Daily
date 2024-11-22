@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
-app.use('/api/tasks', tasksRoutes);
+app.use("/api/tasks", tasksRoutes);
 
 app.listen(5000, () => {
   connectDB();
