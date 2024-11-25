@@ -1,27 +1,14 @@
 import User from "../../models/userModel.js";
 
 export const deleteUser = async (req, res) => {
-  // get the user id
+  //get the id
   const { id } = req.params;
 
   try {
-
-    //search the id on the database
-    const user = await User.findById(id);
-
-    ///if user not found return NOT FOUND
-    if (!user) {
-      return res
-        .status(404)
-        .json({ success: false, message: "user not found" });
-    }
-    
-    //after getiing the id remove the user
-    await user.remove();
-    res
-      .status(200)
-      .json({ success: true, message: "User deleted successfully" });
+    //get buser by id from the database and dekete
+    await User.findByIdAndDelete(id);
+    res.status(200).json({ success: true, message: "user deleted" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to delete user" });
+    res.status(404).json({ success: false, message: "user not found" });
   }
 };

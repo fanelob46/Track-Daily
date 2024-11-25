@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+input {
+  @apply border py-3 px-2;
+}
+
+
 .buttonStyle {
   @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white;
 }
