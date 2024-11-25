@@ -22,6 +22,17 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
 
+      {type === "signup" && (
+        <p>
+          Already have an account? <span className="underline">Login</span>
+        </p>
+      )}
+      {type === "login" && (
+        <p>
+          New here? <span className="underline">Sign Up</span>
+        </p>
+      )}
+
       {(type === "signup" || type === "edit") && (
         <div className="flex justify-between border border-red-400">
           <input
