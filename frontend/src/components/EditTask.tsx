@@ -3,29 +3,39 @@ import Button from "./Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const AddTask = () => {
-  const [newTask, setNewTask] = useState({
+const EditTask = () => {
+  const [editTask, setEditTask] = useState({
     title: "",
     description: "",
     date: "",
     tag: "",
   });
 
-  const handleAddTask = () => {
-    console.log(newTask);
+  const handleSaveTask = () => {
+    console.log(editTask);
+  };
+
+  const handleCancel = () => {
+    setEditTask({
+      title: "",
+      description: "",
+      date: "",
+      tag: "",
+    });
+    console.log("Task editing cancelled");
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setNewTask((prev) => ({ ...prev, [name]: value }));
+    setEditTask((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <section className="">
       <div className="border border-gray-400 p-6 max-w-md mx-auto bg-white shadow-lg rounded-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Add New Task</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Edit Task</h2>
         <form className="px-10">
           <div className="mb-4">
             <label
@@ -39,12 +49,12 @@ const AddTask = () => {
               id="title"
               name="title"
               placeholder="Task Title"
-              value={newTask.title}
+              value={editTask.title}
               onChange={handleChange}
               className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          <div className="mb-4  ">
+          <div className="mb-4">
             <label
               htmlFor="description"
               className="block text-sm font-medium text-gray-700"
@@ -55,7 +65,7 @@ const AddTask = () => {
               id="description"
               name="description"
               placeholder="Task Description"
-              value={newTask.description}
+              value={editTask.description}
               onChange={handleChange}
               className="mt-1 w-full border-gray-300 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               rows={4}
@@ -69,9 +79,9 @@ const AddTask = () => {
               Date
             </label>
             <DatePicker
-              selected={newTask.date ? new Date(newTask.date) : null}
+              selected={editTask.date ? new Date(editTask.date) : null}
               onChange={(date) =>
-                setNewTask((prev) => ({
+                setEditTask((prev) => ({
                   ...prev,
                   date: date?.toISOString() || "",
                 }))
@@ -92,16 +102,19 @@ const AddTask = () => {
               id="tag"
               name="tag"
               placeholder="Task tag (e.g., Work, Personal)"
-              value={newTask.tag}
+              value={editTask.tag}
               onChange={handleChange}
               className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          <Button name="Add Task" buttonFunction={handleAddTask} />
+          <div className="flex space-x-4">
+            <Button name="Save Task" buttonFunction={handleSaveTask} />
+            <Button name="Cancel" buttonFunction={handleCancel} />
+          </div>
         </form>
       </div>
     </section>
   );
 };
 
-export default AddTask;
+export default EditTask;
