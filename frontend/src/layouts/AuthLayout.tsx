@@ -5,7 +5,7 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
     <section className="border border-red-500 grid grid-cols-2 h-screen items-center">
       <img
         className="border h-full w-full object-cover object-center"
-        src="https://checkify.com/wp-content/uploads/design-16x9-47.webp"
+        src="https://cdn.prod.website-files.com/668cdb4718c0f5195a92717d/66a83d38dd44e03e114223f5_Understanding-top-tasks.png"
         alt=""
       />
       {children}

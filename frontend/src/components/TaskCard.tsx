@@ -9,7 +9,7 @@ type TaskCardProps = {
 };
 const TaskCard = ({ title, date, description, tag }: TaskCardProps) => {
   return (
-    <section className="border-2 border-red-500 w-[350px] p-4 space-y-3 rounded-xl hover:scale-105">
+    <section className="border-2 border-red-500 w-[350px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
       <h3 className="text-3xl">{title}</h3>
       <p>{date}</p>
       <p className="text-justify">{description}</p>
