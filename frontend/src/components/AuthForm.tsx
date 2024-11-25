@@ -18,27 +18,27 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
   return (
     <form
       onSubmit={submitFunction}
-      className="flex border flex-col px-10 space-y-4"
+      className="flex border flex-col py-4 px-10  w-full max-w-[550px] mx-auto"
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
 
       {type === "signup" && (
-        <p>
+        <p className="my-4">
           Already have an account? <span className="underline">Login</span>
         </p>
       )}
       {type === "login" && (
-        <p>
+        <p className="my-4">
           New here? <span className="underline">Sign Up</span>
         </p>
       )}
 
       {(type === "signup" || type === "edit") && (
-        <div className="flex justify-between border border-red-400">
+        <div className="flex flex-col lg:flex-row justify-between border border-red-400">
           <input
             type="text"
             id="firstName"
-            className="inputStyles w-[48%]"
+            className="inputStyles lg:w-[48%]"
             placeholder="First Name"
             disabled={type === "edit" && !isEditable}
           />
@@ -46,7 +46,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
           <input
             type="text"
             id="lastName"
-            className="inputStyles w-[48%]"
+            className="inputStyles lg:w-[48%]"
             placeholder="Last Name"
             disabled={type === "edit" && !isEditable}
           />
@@ -79,6 +79,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
       )}
 
       <button
+        className="border my-5"
         type={type === "edit" ? "button" : "submit"}
         onClick={type === "edit" ? handleEditToggle : undefined}
       >
