@@ -79,7 +79,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
       )}
 
       <button
-        className="border my-5"
+        className="buttonStyle my-5"
         type={type === "edit" ? "button" : "submit"}
         onClick={type === "edit" ? handleEditToggle : undefined}
       >
