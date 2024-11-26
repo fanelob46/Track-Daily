@@ -1,4 +1,5 @@
 import AddTaskUI from "./components/AddTaskUI";
+import TaskGrid from "./components/TaskGrid";
 import SignUpPage from "./pages/SignUpPage";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <AddTaskUI />
       <SignUpPage />
+      <TaskGrid />
     </>
   );
 }
