@@ -8,7 +8,7 @@ interface Task {
   description: string;
   date: string;
   tag: number;
-  //   UserId: string;
+  UserId: string;
 }
 
 interface TaskStore {
@@ -34,7 +34,8 @@ export const useTaskStore = create<TaskStore>((set) => ({
       !newTask.title ||
       !newTask.description ||
       !newTask.date ||
-      !newTask.tag
+      !newTask.tag ||
+      !newTask.UserId
     ) {
       return { success: false, message: "please enter all fields.." };
     }
