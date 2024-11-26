@@ -9,7 +9,7 @@ import Calendar from "./components/Calendar"
 
 function App() {
   return (
-    <>
+    <div className="bg-[var(--secondary-color)] text-[var(--text-color)]">
       <h1 className="text-9xl"> Baloyi fanelo</h1>
       <AddTask/>
       <EditTask/>
@@ -17,13 +17,10 @@ function App() {
       <AddTaskUI />
       <SignUpPage />
       <TaskGrid />
-    </>
-  );
-    <div className="bg-[var(--secondary-color)] text-[var(--text-color)]">
      <MainLayout/>
      <Calendar/>
     </div>
-  )
+  );
 }
 
 export default App;
