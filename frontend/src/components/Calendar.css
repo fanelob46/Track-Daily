@@ -1,0 +1,22 @@
+
+
+.react-calendar {
+    @apply bg-[var(--primary-color)] shadow-lg rounded-lg p-4;
+  }
+  
+  .react-calendar__tile {
+    @apply text-black hover:bg-[#6444f4] hover:text-white rounded-md;
+  }
+  
+  .react-calendar__tile--active {
+    @apply bg-[#6444f4] text-white;
+  }
+  
+  .react-calendar__navigation button {
+    @apply text-black font-semibold hover:bg-[#6444f4] rounded-md p-2;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    @apply text-gray-400 font-medium;
+  }
+  
