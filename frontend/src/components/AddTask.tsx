@@ -2,16 +2,36 @@ import React, { useState } from "react";
 import Button from "./Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTaskStore } from "../../store/Task";
+
+interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  tag: string;
+}
 
 const AddTask = () => {
-  const [newTask, setNewTask] = useState({
+  const { createTask } = useTaskStore();
+
+  const [newTask, setNewTask] = useState<Omit<Task, "_id">>({
+    
     title: "",
     description: "",
     date: "",
     tag: "",
   });
 
-  const handleAddTask = () => {
+  const handleAddTask = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const taskData = {
+        ...newTask,
+      };
+      await createTask(taskData);
+    } catch (error) {}
     console.log(newTask);
   };
 
@@ -107,7 +127,8 @@ const AddTask = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-          <Button name="Add Task" buttonFunction={handleAddTask} />
+          {/* <Button name="Add Task" buttonFunction={handleAddTask} /> */}
+          <button onClick={handleAddTask}>Add TASK</button>
         </form>
       </div>
     </section>

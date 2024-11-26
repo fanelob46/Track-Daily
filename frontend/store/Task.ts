@@ -1,4 +1,4 @@
-import { set } from "mongoose";
+// import { set } from "mongoose";
 // import { pid } from "process";
 import { create } from "zustand";
 
@@ -7,8 +7,7 @@ interface Task {
   title: string;
   description: string;
   date: string;
-  tag: number;
-  UserId: string;
+  tag: string;
 }
 
 interface TaskStore {
@@ -34,8 +33,8 @@ export const useTaskStore = create<TaskStore>((set) => ({
       !newTask.title ||
       !newTask.description ||
       !newTask.date ||
-      !newTask.tag ||
-      !newTask.UserId
+      !newTask.tag 
+      
     ) {
       return { success: false, message: "please enter all fields.." };
     }
