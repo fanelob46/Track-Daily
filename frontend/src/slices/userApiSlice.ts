@@ -10,11 +10,11 @@ interface LoginRequest {
 
 interface LoginResponse {
   token: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  id: string
 }
 
 interface RegisterRequest {
@@ -51,7 +51,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginRequest>({
       query: (data) => ({
-        url: `${USERS_URL}/auth`,
+        url: `${USERS_URL}/login`,
         method: "POST",
         body: data,
       }),

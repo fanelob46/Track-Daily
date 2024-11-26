@@ -1,7 +1,10 @@
 import React from 'react'
+import FilterDropdown from '../components/DateFilter'
 
 export const UserDashboard = () => {
   return (
-    <div>UserDashboard</div>
+    <div>
+      <FilterDropdown/>
+    </div>
   )
 }
