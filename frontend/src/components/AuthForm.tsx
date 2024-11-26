@@ -3,7 +3,7 @@ import { useState } from "react";
 type AuthFormProps = {
   name: string;
   type: "signup" | "login" | "edit";
-  submitFunction: () => void;
+  submitFunction: (userData: Record<string, string>) => Promise<void>;
 };
 
 const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
@@ -15,9 +15,26 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+
+    formData.forEach((value, key) => {
+      data[key] = value.toString(); // Converts all input values to strings
+    });
+
+    data.isAdmin = "false"; // Explicitly set as a boolean value
+
+    console.log(data); // For debugging
+
+    submitFunction(data); // Pass the data to the parent function
+  };
+
   return (
     <form
-      onSubmit={submitFunction}
+      onSubmit={handleSubmit}
       className="flex border flex-col py-4 px-10  w-full max-w-[550px] mx-auto"
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
@@ -37,6 +54,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
         <div className="flex flex-col lg:flex-row justify-between border border-red-400">
           <input
             type="text"
+            name="firstName"
             id="firstName"
             className="inputStyles lg:w-[48%]"
             placeholder="First Name"
@@ -46,6 +64,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
           <input
             type="text"
             id="lastName"
+            name="lastName"
             className="inputStyles lg:w-[48%]"
             placeholder="Last Name"
             disabled={type === "edit" && !isEditable}
@@ -56,6 +75,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
       <input
         type="email"
         id="email"
+        name="email"
         placeholder="Email Address"
         disabled={type === "edit" && !isEditable}
       />
@@ -63,6 +83,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
       <input
         type="password"
         id="password"
+        name="password"
         placeholder="Enter your password"
         disabled={type === "edit" && !isEditable}
       />
@@ -72,6 +93,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
           <input
             type="password"
             id="confirmPassword"
+            name="confirmPassword"
             placeholder="Confirm your password"
             disabled={type === "edit" && !isEditable}
           />
@@ -80,7 +102,7 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
 
       <button
         className="buttonStyle my-5"
-        type={type === "edit" ? "button" : "submit"}
+        type="submit"
         onClick={type === "edit" ? handleEditToggle : undefined}
       >
         {type === "signup"
