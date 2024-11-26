@@ -16,7 +16,9 @@ const AddTask = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setNewTask((prev) => ({ ...prev, [name]: value }));
@@ -44,7 +46,7 @@ const AddTask = () => {
               className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-          <div className="mb-4  ">
+          <div className="mb-4">
             <label
               htmlFor="description"
               className="block text-sm font-medium text-gray-700"
@@ -87,15 +89,23 @@ const AddTask = () => {
             >
               Tag
             </label>
-            <input
-              type="text"
+            <select
               id="tag"
               name="tag"
-              placeholder="Task tag (e.g., Work, Personal)"
               value={newTask.tag}
               onChange={handleChange}
               className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            >
+              <option value="" disabled>
+                Select a Tag
+              </option>
+              <option value="Gym">Gym</option>
+              <option value="Travel">Travel</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
           <Button name="Add Task" buttonFunction={handleAddTask} />
         </form>
