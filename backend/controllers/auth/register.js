@@ -3,7 +3,7 @@ import generateToken from "../../utils/generateToken.js";
 
 export const registerUser = async (req, res) => {
   //get the user inputs
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password, isAdmin } = req.body;
 
   //check if user exists using the email
   const userExists = await User.findOne({ email });
@@ -20,9 +20,10 @@ export const registerUser = async (req, res) => {
     lastName,
     email,
     password,
+    isAdmin,
   });
 
-  //checck if the user was created
+  //check if the user was created
   if (user) {
     generateToken(res, user._id, user.isAdmin);
     res.status(201).json({
