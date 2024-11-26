@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+input {
+  @apply border py-4 px-4 my-2 rounded-xl;
+}
+
+
+.buttonStyle {
+  @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white;
+}
+
+
 :root{
     --primary-color: white;
     --secondary-color: #f7f8fa;

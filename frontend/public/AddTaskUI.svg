@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background shapes -->
+  <rect x="20" y="40" width="120" height="160" rx="10" ry="10" fill="#eaeaea" />
+  <rect x="40" y="20" width="120" height="160" rx="10" ry="10" fill="#ffffff" stroke="#ccc" />
+
+  <!-- Inner elements -->
+  <rect x="60" y="50" width="80" height="20" fill="#000000" />
+  <rect x="60" y="80" width="60" height="10" fill="#eaeaea" />
+  <rect x="60" y="100" width="60" height="10" fill="#eaeaea" />
+  <rect x="60" y="120" width="60" height="10" fill="#eaeaea" />
+
+  <!-- Plus icon -->
+  <circle cx="140" cy="140" r="20" fill="#000000" />
+  <line x1="140" y1="130" x2="140" y2="150" stroke="#ffffff" stroke-width="4" />
+  <line x1="130" y1="140" x2="150" y2="140" stroke="#ffffff" stroke-width="4" />
+</svg>
