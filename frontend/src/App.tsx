@@ -1,25 +1,35 @@
-import AddTask from "./components/AddTask";
-import AddTaskUI from "./components/AddTaskUI";
-import TaskGrid from "./components/TaskGrid";
-import EditTask from "./components/EditTask";
-import UserInfo from "./components/UserInfo";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUpPage from "./pages/SignUpPage";
-import MainLayout from "./components/MainLayout"
-import Calendar from "./components/Calendar"
+import { LandingPage } from "./pages/LandingPage";
+import { LoginPage } from "./pages/LoginPage";
+import { UserDashboard } from "./pages/UserDashboard";
+import { TasksPage } from "./pages/TasksPage";
+import { CalendarPage } from "./pages/CalendarPage";
+import { TrashPage } from "./pages/TrashPage";
+import { UserProfile } from "./pages/UserProfile";
+import { AdminDashboard } from "./pages/AdminDashboard";
+import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   return (
-    <div className="bg-[var(--secondary-color)] text-[var(--text-color)]">
-      <h1 className="text-9xl"> Baloyi fanelo</h1>
-      <AddTask/>
-      <EditTask/>
-      <UserInfo/>
-      <AddTaskUI />
-      <SignUpPage />
-      <TaskGrid />
-     <MainLayout/>
-     <Calendar/>
-    </div>
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Protected Routes */}
+        <Route path="" element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<UserDashboard />} />
+          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/trash" element={<TrashPage />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
