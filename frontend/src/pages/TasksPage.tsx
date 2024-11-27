@@ -39,7 +39,7 @@ export const TasksPage = () => {
           <AddTaskUI />
         </Link>
       </div> */}
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-3 gap-10 px-10 py-10 ">
         {tasks.map((task) => (
           <TaskCard key={task._id} task={task} />
         ))}
