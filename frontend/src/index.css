@@ -7,7 +7,26 @@ input {
 }
 
 .buttonStyle {
-  @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white text-center;
+  @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white text-center hover:scale-[1.02];
+}
+
+h1 {
+  @apply text-5xl font-bold sm:text-6xl;
+}
+
+h2 {
+  @apply text-xl font-semibold sm:text-3xl;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 :root {
