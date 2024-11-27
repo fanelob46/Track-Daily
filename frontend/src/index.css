@@ -6,24 +6,20 @@ input {
   @apply border py-4 px-4 my-2 rounded-xl;
 }
 
-
 .buttonStyle {
-  @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white;
+  @apply p-2 rounded-md min-w-[80px] bg-[#6444f4] text-white text-center;
 }
 
-
-:root{
-    --primary-color: white;
-    --secondary-color: #f7f8fa;
-    --accent: #6444f4;
-    --text-color: black;
+:root {
+  --primary-color: white;
+  --secondary-color: #f7f8fa;
+  --accent: #6444f4;
+  --text-color: black;
 }
 
 [data-theme="dark"] {
-    --primary-color: linear-gradient(to bottom, #2e263d, #434452);
-    --secondary-color: #6444f4;
-    --accent: #f7f8fa;
-    --text-color: white;
+  --primary-color: linear-gradient(to bottom, #2e263d, #434452);
+  --secondary-color: #6444f4;
+  --accent: #f7f8fa;
+  --text-color: white;
 }
-
-

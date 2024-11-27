@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
-import {useTaskStore} from "../../store/Task.ts"
-
 export const LandingPage = () => {
-
   return (
-    <div>LandingPage</div>
-  )
-}
+    <section>
+      <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-12">
+        <img src="TrackDailyLogo.svg" alt="" />
+        {/* <div>Search</div> */}
+
+        <div className="flex">
+          <p>Sign up</p>
+          <p>Sign up</p>
+        </div>
+      </nav>
+    </section>
+  );
+};
