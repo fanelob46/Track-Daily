@@ -4,8 +4,8 @@ import {
   MdCalendarMonth,
   MdLightMode,
 } from "react-icons/md";
-import { IoTrashBin } from "react-icons/io5";
-import { IoMdSettings } from "react-icons/io";
+import { IoSettingsOutline, IoTrashBin } from "react-icons/io5";
+import { IoIosLogOut, IoMdSettings } from "react-icons/io";
 import { FaRegMoon } from "react-icons/fa";
 import Logout from "./Logout";
 import { Link } from "react-router-dom";
@@ -56,6 +56,7 @@ export default function Sidebar() {
         <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
           <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoMdSettings />
+            </a>
           <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoSettingsOutline />
             <p>Settings</p>
