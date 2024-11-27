@@ -1,13 +1,13 @@
-import React from 'react'
+// import React from 'react'
 
 type ButtonsProps = {
-  name: String;
+  name: string;
   buttonFunction: () => void;
 };
 
 const Button = ({ name, buttonFunction }: ButtonsProps) => {
   return (
-    <button className="buttonStyle" onClick={buttonFunction}>
+    <button className="buttonStyle w-full" onClick={buttonFunction}>
       {name}
     </button>
   );

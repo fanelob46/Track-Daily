@@ -15,6 +15,7 @@ import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (
+    <div className="bg-gray-100 font-title">
     <Router>
       <Routes>
         {/* Public Routes */}
@@ -37,6 +38,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </div>
   );
 }
 

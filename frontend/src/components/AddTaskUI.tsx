@@ -1,17 +1,25 @@
+import Button from "./Button";
+
 const AddTaskUI = () => {
-  const openAddUI = () => {
-    console.log("Open UI");
-  };
+  // const openAddUI = () => {
+  //   console.log("Open UI");
+  // };
+
+  const handleAdd = () => {
+
+  }
   return (
-    <div
-      className="border w-fit p-10 cursor-pointer hover:scale-[1.02] hover:bg-gray-100"
-      onClick={openAddUI}
-    >
+    <div className="w-[70%] h-[60vh] space-y-4">
+    <div className="bg-gray-50 p-4 flex flex-col justify-center items-center space-y-2 rounded-lg h-full">
       <img
-        className="scale-150 mx-auto  hover:bg-gray-100"
-        src="AddTaskUI.svg"
+        className=""
+        src="emptyy.png"
         alt=""
       />
+      <p className="text-gray-500">You don't have any tasks assigned</p>
+      <p>List of tasks you've assigned to will appear hear</p>
+    </div>
+    <Button name={"Create a new task"} buttonFunction={handleAdd} />
     </div>
   );
 };
