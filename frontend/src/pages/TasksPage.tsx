@@ -34,11 +34,11 @@ export const TasksPage = () => {
   //   </div>
   // );
     <div className="space-y-10">
-      <div className="py-5 px-10">
+      {/* <div className="py-5 px-10">
         <Link to={"/add-task"}>
           <AddTaskUI />
         </Link>
-      </div>
+      </div> */}
       <div className="grid grid-cols-2">
         {tasks.map((task) => (
           <TaskCard key={task._id} task={task} />

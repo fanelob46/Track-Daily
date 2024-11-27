@@ -3,16 +3,14 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const handleSignUp = () =>{
+  const handleSignUp = () => {};
 
-  };
+  const handlelogin = () => {};
+
   return (
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
       <div className="flex items-center gap-2 font-semibold pl-2">
-        <img
-        src="/TrackDailyLogo.svg"
-        className="w-7"
-        />
+        <img src="/TrackDailyLogo.svg" className="w-7" />
         <p>Track Daily</p>
       </div>
       {/* <div>Search</div> */}
@@ -25,10 +23,10 @@ export default function Navbar() {
       </div>
       <div className="flex gap-4">
         <Link to="/login">
-        <Button name={"Register"} buttonFunction={handleSignUp}/>
+          <Button name={"login"} buttonFunction={handlelogin} />
         </Link>
         <Link to="/signup">
-        <Button name={"Login"} buttonFunction={handleSignUp}/>
+          <Button name={"Register"} buttonFunction={handleSignUp} />
         </Link>
       </div>
     </nav>

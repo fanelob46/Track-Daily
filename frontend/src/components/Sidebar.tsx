@@ -7,6 +7,7 @@ import {
 import { IoSettingsOutline, IoTrashBin } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
 import { FaRegMoon } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -20,13 +21,13 @@ export default function Sidebar() {
             <MdDashboardCustomize className="text-[var(--accent)] size-6" />
             <p>Dashboard</p>
           </a>
-          <a
-            href="/tasks"
+          <Link
+            to={"dashboard/tasks"}
             className="hover:font-semibold flex items-center gap-5"
           >
             <MdOutlineAddTask className="text-orange-500 size-6" />
             <p>Tasks</p>
-          </a>
+          </Link>
           <a
             href="/calendar"
             className="hover:font-semibold flex items-center gap-5"
@@ -35,27 +36,21 @@ export default function Sidebar() {
             <p>Calendar</p>
           </a>
           <div>
-          <a
-            href="/trash"
-            className="hover:font-semibold flex items-center gap-5"
-          >
-            <IoTrashBin className="text-gray-500 font-bold size-6" />
-            <p>Trash</p>
-          </a>
+            <a
+              href="/trash"
+              className="hover:font-semibold flex items-center gap-5"
+            >
+              <IoTrashBin className="text-gray-500 font-bold size-6" />
+              <p>Trash</p>
+            </a>
           </div>
         </div>
         <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
-          <a
-            href="#"
-            className="hover:font-semibold flex items-center gap-5"
-          >
+          <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoSettingsOutline />
             <p>Settings</p>
           </a>
-          <a
-            href="#"
-            className="hover:font-semibold flex items-center gap-5"
-          >
+          <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoIosLogOut />
             <p>Logout</p>
           </a>
