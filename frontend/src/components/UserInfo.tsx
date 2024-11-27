@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 const UserInfo = () => {
   const getCurrentDate = () => {
@@ -17,7 +17,7 @@ const UserInfo = () => {
   };
 
   return (
-    <div className="border border-gray-400 p-6 max-w-md mx-auto bg-white shadow-lg rounded-md">
+    <div className="border border-gray-400 p-6 bg-white shadow-lg rounded-md w-[30%]">
       <h1>Hello, {"username"}</h1>
       <h1>Today, {getCurrentDate()}</h1>
     </div>

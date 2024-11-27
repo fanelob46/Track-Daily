@@ -7,7 +7,7 @@ const MyCalendar: React.FC = () => {
   const [date, setDate] = useState<Date>(new Date());
 
   return (
-    <div className="flex flex-col items-center p-4">
+    <div className="flex flex-col items-center">
       {/* <h1 className="text-2xl font-bold mb-4">React Calendar</h1> */}
       <Calendar
         onChange={setDate}
