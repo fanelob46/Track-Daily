@@ -1,6 +1,10 @@
 import { CiSearch } from "react-icons/ci";
+import Button from "./Button";
 
 export default function Navbar() {
+  const handleSignUp = () =>{
+
+  };
   return (
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
       <div>Logo</div>
@@ -12,9 +16,9 @@ export default function Navbar() {
           className="border-none h-full bg-[var(--secondary-color)] w-full"
         ></input>
       </div>
-      <div className="flex">
-        <p>Sign up</p>
-        <p>Sign up</p>
+      <div className="flex gap-4">
+        <Button name={"Register"} buttonFunction={handleSignUp}/>
+        <Button name={"Login"} buttonFunction={handleSignUp}/>
       </div>
     </nav>
   );
