@@ -4,9 +4,10 @@ import {
   MdCalendarMonth,
   MdLightMode,
 } from "react-icons/md";
-import { IoLogOut, IoTrashBin } from "react-icons/io5";
+import { IoTrashBin } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
 import { FaRegMoon } from "react-icons/fa";
+import Logout from "./Logout";
 
 export default function Sidebar() {
   return (
@@ -35,30 +36,21 @@ export default function Sidebar() {
             <p>Calendar</p>
           </a>
           <div>
-          <a
-            href="/trash"
-            className="hover:font-semibold flex items-center gap-5"
-          >
-            <IoTrashBin className="text-gray-500 font-bold size-6" />
-            <p>Trash</p>
-          </a>
+            <a
+              href="/trash"
+              className="hover:font-semibold flex items-center gap-5"
+            >
+              <IoTrashBin className="text-gray-500 font-bold size-6" />
+              <p>Trash</p>
+            </a>
           </div>
         </div>
         <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
-          <a
-            href="#"
-            className="hover:font-semibold flex items-center gap-5"
-          >
+          <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoMdSettings />
             <p>Settings</p>
           </a>
-          <a
-            href="/logout"
-            className="hover:font-semibold flex items-center gap-5"
-          >
-            <IoLogOut />
-            <p>Logout</p>
-          </a>
+          <Logout />
         </div>
         <div className="bg-[var(--primary-color)] p-5">
           <div className="flex items-center bg-[var(--secondary-color)] p-4 justify-between w-[50%]">
