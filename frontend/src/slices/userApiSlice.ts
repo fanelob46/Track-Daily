@@ -14,7 +14,7 @@ interface LoginResponse {
   lastName: string;
   email: string;
   password: string;
-  id: string
+  id: string;
 }
 
 interface RegisterRequest {

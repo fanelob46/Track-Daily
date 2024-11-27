@@ -1,13 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ToggleSwitch } from "flowbite-react";
+import { UserFormData } from "../definitions";
 
 type AuthFormProps = {
   name: string;
   type: "signup" | "login" | "edit";
-  submitFunction: (userData: Record<string, string>) => Promise<void>;
+  submitFunction: (userData: UserFormData) => Promise<void>;
+  error: string;
 };
 
-const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
+const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
   const [isEditable, setIsEditable] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleEditToggle = () => {
     if (type === "edit") {
@@ -15,21 +20,31 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  console.log("error  ", error);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
+    const data = {
+      firstName: formData.get("firstName")?.toString() || "",
+      lastName: formData.get("lastName")?.toString() || "",
+      email: formData.get("email")?.toString() || "",
+      password: formData.get("password")?.toString() || "",
+      confirmPassword: formData.get("confirmPassword")?.toString() || "",
+      isAdmin: isAdmin,
+      secretKey: isAdmin
+        ? formData.get("secretKey")?.toString() || ""
+        : undefined,
+    };
 
-    formData.forEach((value, key) => {
-      data[key] = value.toString(); // Converts all input values to strings
-    });
+    console.log(data);
 
-    data.isAdmin = "false"; // Explicitly set as a boolean value
-
-    console.log(data); // For debugging
-
-    submitFunction(data); // Pass the data to the parent function
+    try {
+      await submitFunction(data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -41,17 +56,23 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
 
       {type === "signup" && (
         <p className="my-4">
-          Already have an account? <span className="underline">Login</span>
+          Already have an account?{" "}
+          <Link to="/login" className="underline">
+            Login
+          </Link>
         </p>
       )}
       {type === "login" && (
         <p className="my-4">
-          New here? <span className="underline">Sign Up</span>
+          New here?{" "}
+          <Link to="/signup" className="underline">
+            Sign Up{" "}
+          </Link>
         </p>
       )}
 
       {(type === "signup" || type === "edit") && (
-        <div className="flex flex-col lg:flex-row justify-between border border-red-400">
+        <div className="flex flex-col lg:flex-row justify-between ">
           <input
             type="text"
             name="firstName"
@@ -80,6 +101,26 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
         disabled={type === "edit" && !isEditable}
       />
 
+      {type === "signup" && (
+        <div className="my-1">
+          <ToggleSwitch
+            checked={isAdmin}
+            label="Sign up as Admin"
+            onChange={setIsAdmin}
+          />
+        </div>
+      )}
+
+      {isAdmin && (
+        <input
+          type="text"
+          id="secretKey"
+          name="secretKey"
+          className="inputStyles"
+          placeholder="Secret Key"
+        />
+      )}
+
       <input
         type="password"
         id="password"
@@ -99,6 +140,8 @@ const AuthForm = ({ name, type, submitFunction }: AuthFormProps) => {
           />
         </>
       )}
+
+      <p className="text-red-400">{error}</p>
 
       <button
         className="buttonStyle my-5"
