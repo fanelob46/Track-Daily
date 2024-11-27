@@ -16,28 +16,28 @@ import MainLayout from "./layouts/MainLayout";
 function App() {
   return (
     <div className="bg-gray-100 font-title">
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
 
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/" element={<MainLayout />}>
-          {/* Protected Routes */}
-          <Route path="" element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<UserDashboard />} />
-            <Route path="/tasks" element={<TasksPage />} />
-            <Route path="/calendar" element={<CalendarPage />} />
-            <Route path="/trash" element={<TrashPage />} />
-            <Route path="/profile" element={<UserProfile />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/add-task" element={<AddTask />} />
+          <Route path="/" element={<MainLayout />}>
+            {/* Protected Routes */}
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/dashboard" element={<UserDashboard />} />
+              <Route path="/dashboard/tasks" element={<TasksPage />} />
+              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/trash" element={<TrashPage />} />
+              <Route path="/profile" element={<UserProfile />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/add-task" element={<AddTask />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </div>
   );
 }
