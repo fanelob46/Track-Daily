@@ -32,6 +32,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path='/add-task' element={<AddTask/>} />
+          </Route>
         <Route path="/" element={<MainLayout />}>
           {/* Protected Routes */}
           <Route path="" element={<PrivateRoute />}>
