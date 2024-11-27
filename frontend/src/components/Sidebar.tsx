@@ -44,13 +44,6 @@ export default function Sidebar() {
               <IoTrashBin className="text-gray-500 font-bold size-6" />
               <p>Trash</p>
             </a>
-            <a
-              href="/trash"
-              className="hover:font-semibold flex items-center gap-5"
-            >
-              <IoTrashBin className="text-gray-500 font-bold size-6" />
-              <p>Trash</p>
-            </a>
           </div>
         </div>
         <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
