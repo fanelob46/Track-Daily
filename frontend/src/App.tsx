@@ -9,6 +9,7 @@ import { TrashPage } from "./pages/TrashPage";
 import { UserProfile } from "./pages/UserProfile";
 import { AdminDashboard } from "./pages/AdminDashboard";
 import { PrivateRoute } from './components/PrivateRoute';
+import AddTask from './components/AddTask';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/trash" element={<TrashPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path='/add-task' element={<AddTask/>} />
         </Route>
       </Routes>
     </Router>

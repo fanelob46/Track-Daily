@@ -3,6 +3,7 @@ import Button from "./Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useTaskStore } from "../../store/Task";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Task {
   _id: string;
@@ -14,6 +15,7 @@ interface Task {
 
 const AddTask = () => {
   const { createTask } = useTaskStore();
+  const navigate = useNavigate()
 
   const [newTask, setNewTask] = useState<Omit<Task, "_id">>({
     
@@ -33,6 +35,7 @@ const AddTask = () => {
       await createTask(taskData);
     } catch (error) {}
     console.log(newTask);
+    navigate("/dashboard/tasks");
   };
 
   const handleChange = (
@@ -128,7 +131,8 @@ const AddTask = () => {
             </select>
           </div>
           {/* <Button name="Add Task" buttonFunction={handleAddTask} /> */}
-          <button onClick={handleAddTask}>Add TASK</button>
+            <button onClick={handleAddTask}>Add TASK</button>
+          
         </form>
       </div>
     </section>
