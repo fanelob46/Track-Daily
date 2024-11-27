@@ -4,6 +4,7 @@ export type User = {
   firstName: string;
   lastName: string;
   email: string;
+  secretKey?: string;
 };
 
 export type CreateUserResponse = {
@@ -68,4 +69,22 @@ export type UpdateUserResponse = {
   id: string;
   name: string;
   email: string;
+};
+
+export type UserFormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  isAdmin: boolean;
+  secretKey?: string | "";
+};
+
+export type RegisterErrorResponse = {
+  status: number;
+  data: {
+    success: boolean;
+    message: string;
+  };
 };

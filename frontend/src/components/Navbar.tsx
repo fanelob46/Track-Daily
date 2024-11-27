@@ -1,12 +1,11 @@
 import { CiSearch } from "react-icons/ci";
-import Button from "./Button";
+import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 export default function Navbar() {
-  const handleSignUp = () => {};
-
-  const handlelogin = () => {};
-
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   return (
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
       <div className="flex items-center gap-2 font-semibold pl-2">
@@ -21,14 +20,19 @@ export default function Navbar() {
           className="border-none h-full bg-[var(--secondary-color)] w-full"
         ></input>
       </div>
-      <div className="flex gap-4">
-        <Link to="/login">
-          <Button name={"login"} buttonFunction={handlelogin} />
+      {userInfo ? (
+        <Link to="/profile" className="flex w-[100px] justify-between">
+          <FaRegUserCircle className="scale-[3]" />
+          <div>
+            <p>{userInfo.firstName}</p>
+          </div>
         </Link>
-        <Link to="/signup">
-          <Button name={"Register"} buttonFunction={handleSignUp} />
-        </Link>
-      </div>
+      ) : (
+        <div className="flex gap-4">
+          <Link to="/login">Register</Link>
+          <Link to="/signup">Login</Link>
+        </div>
+      )}
     </nav>
   );
 }

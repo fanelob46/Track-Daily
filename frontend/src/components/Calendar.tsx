@@ -12,7 +12,7 @@ const MyCalendar: React.FC = () => {
       <Calendar
         onChange={setDate}
         value={date}
-        className="bg-white shadow-md rounded-lg"
+        className="bg-white rounded-lg"
       />
       <p className="mt-4">
         Selected Date:{" "}

@@ -4,20 +4,25 @@ import AuthLayout from "../layouts/AuthLayout";
 import { setCredentials } from "../slices/authSlices";
 import { useRegisterMutation } from "../slices/userApiSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { RegisterErrorResponse, UserFormData } from "../definitions";
 
 const SignUpPage = () => {
   const [register] = useRegisterMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [signUpError, setSignUpError] = useState("");
 
-  const handleSignUp = async (userData: Record<string, string>) => {
+  const handleSignUp = async (userData: UserFormData) => {
     const { firstName, lastName, email, password, confirmPassword, isAdmin } =
       userData;
 
-    console.log("Boolean(isAdmin)   ", Boolean(isAdmin));
-
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
+      setSignUpError("Passwords do not match");
+      return;
+    } else if (import.meta.env.VITE_SECRET_KEY !== userData?.secretKey) {
+      setSignUpError("Incorrect SECRET_KEY");
+      return;
     } else {
       try {
         const res = await register({
@@ -25,25 +30,29 @@ const SignUpPage = () => {
           lastName,
           email,
           password,
-          isAdmin: Boolean(isAdmin),
+          isAdmin,
         }).unwrap();
 
         dispatch(setCredentials({ ...res }));
-        navigate("/");
+        navigate("/dashboard");
+        setSignUpError("");
       } catch (error) {
-        console.log(error);
+        const errorMessage: RegisterErrorResponse =
+          error as RegisterErrorResponse;
+        setSignUpError(errorMessage.data.message);
       }
     }
   };
-  // const handleEdit = () => console.log("Edit User");
   return (
     <section>
       <AuthLayout>
-        <AuthForm name="Sign Up" type="signup" submitFunction={handleSignUp} />
+        <AuthForm
+          name="Sign Up"
+          type="signup"
+          submitFunction={handleSignUp}
+          error={signUpError}
+        />
       </AuthLayout>
-      
-
-      {/* <AuthForm name="Edit" type="edit" submitFunction={handleEdit} /> */}
     </section>
   );
 };
