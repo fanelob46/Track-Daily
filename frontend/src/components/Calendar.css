@@ -1,7 +1,7 @@
 
 
 .react-calendar {
-    @apply bg-[var(--primary-color)] shadow-lg rounded-lg p-4;
+    @apply bg-[var(--primary-color)] rounded-lg p-4;
   }
   
   .react-calendar__tile {

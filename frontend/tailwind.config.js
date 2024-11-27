@@ -15,6 +15,9 @@ export default {
         secondary: "var(--secondary-color)",
         text: "var(--text-color)",
       },
+      fontFamily: {
+        title: ["Kanit", "sans-serif"],
+      }
     },
   },
   plugins: [],
