@@ -21,7 +21,7 @@ const FilterDropdown: React.FC = () => {
   return (
     <div className="relative inline-block w-[20%]">
       <select
-        className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+        className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--accent)] w-full"
         value={selectedFilter}
         onChange={(e) => setSelectedFilter(e.target.value)}
       >

@@ -11,7 +11,7 @@ input {
 }
 
 h1 {
-  @apply text-5xl font-bold sm:text-6xl;
+  @apply sm:text-6xl;
 }
 
 h2 {

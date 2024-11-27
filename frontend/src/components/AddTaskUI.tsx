@@ -9,7 +9,7 @@ const AddTaskUI = () => {
 
   }
   return (
-    <div className="w-[70%] h-[60vh]">
+    <div className="w-[70%] h-[60vh] space-y-4">
     <div className="bg-gray-50 p-4 flex flex-col justify-center items-center space-y-2 rounded-lg h-full">
       <img
         className=""
