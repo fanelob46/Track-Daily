@@ -17,11 +17,13 @@ const SignUpPage = () => {
     const { firstName, lastName, email, password, confirmPassword, isAdmin } =
       userData;
 
+    if (isAdmin && import.meta.env.VITE_SECRET_KEY !== userData?.secretKey) {
+      setSignUpError("Incorrect SECRET_KEY");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setSignUpError("Passwords do not match");
-      return;
-    } else if (import.meta.env.VITE_SECRET_KEY !== userData?.secretKey) {
-      setSignUpError("Incorrect SECRET_KEY");
       return;
     } else {
       try {
