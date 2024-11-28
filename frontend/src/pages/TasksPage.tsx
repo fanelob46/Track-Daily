@@ -1,14 +1,10 @@
 // import React from 'react'
-import FilterDropdown from '../components/DateFilter'
-import UserInfo from '../components/UserInfo'
 // import TaskCard from '../components/TaskCard'
-import React, { useEffect } from 'react'
-import { useTaskStore } from '../../store/Task';
-import TaskCard from '../components/TaskCard';
-import AddTaskUI from '../components/AddTaskUI';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useTaskStore } from "../../store/Task";
+import TaskCard from "../components/TaskCard";
+import { Link } from "react-router-dom";
 import { IoIosAddCircleOutline } from "react-icons/io";
-
 
 export const TasksPage = () => {
   const { tasks, fetchTasks } = useTaskStore();
@@ -36,7 +32,7 @@ export const TasksPage = () => {
     //   </div>
     // );
     <div className="space-y-10">
-      <div className='py-5 flex justify-end pr-20'>
+      <div className="py-5 flex justify-end pr-20">
         <Link to={"/add-task"}>
           <IoIosAddCircleOutline className="text-4xl" />
         </Link>
@@ -49,4 +45,4 @@ export const TasksPage = () => {
       </div>
     </div>
   );
-}
+};

@@ -4,10 +4,13 @@ import Sidebar from "../components/Sidebar";
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="grid grid-cols-16 ">
+    <div className="grid grid-cols-16 h-screen">
       <Navbar />
       <Sidebar />
-      <div className="border-2 col-span-14">
+      <div
+        className=" col-span-14 p-10 h-[90vh] 
+      "
+      >
         <Outlet />
       </div>
     </div>
