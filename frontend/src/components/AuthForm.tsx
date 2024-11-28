@@ -20,8 +20,6 @@ const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
     }
   };
 
-  console.log("error  ", error);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

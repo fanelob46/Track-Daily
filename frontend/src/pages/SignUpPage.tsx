@@ -36,8 +36,12 @@ const SignUpPage = () => {
         }).unwrap();
 
         dispatch(setCredentials({ ...res }));
-        navigate("/dashboard");
         setSignUpError("");
+        if (isAdmin) {
+          navigate("/admin");
+        } else {
+          navigate("/dashboard");
+        }
       } catch (error) {
         const errorMessage: RegisterErrorResponse =
           error as RegisterErrorResponse;
