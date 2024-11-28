@@ -58,7 +58,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   return (
     <>
       {/* Task Card */}
-      <section className="border-2 border-gray-300 shadow-lg w-[350px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
+      <section className="border-2 border-gray-300 shadow-lg w-[270px] sm:w-[250px] md:w-[300px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
         <h3 className="text-3xl">{task.title}</h3>
         <p>{task.date}</p>
         <p className="text-justify">{task.description}</p>

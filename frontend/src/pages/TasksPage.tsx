@@ -1,6 +1,6 @@
 // import React from 'react'
 // import TaskCard from '../components/TaskCard'
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useTaskStore } from "../../store/Task";
 import TaskCard from "../components/TaskCard";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ export const TasksPage = () => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 h-[70vh] overflow-y-scroll">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  gap-10 h-[70vh] overflow-y-scroll">
         {tasks.map((task) => (
           <TaskCard key={task._id} task={task} />
         ))}
