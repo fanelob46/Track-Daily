@@ -25,14 +25,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
-  const tagOptions = [
-    "Work",
-    "Travel",
-    "Shopping",
-    "Personal",
-    "Gym",
-    "O ther",
-  ];
+  const tagOptions = ["Work", "Travel", "Shopping", "Personal", "Gym", "Other"];
 
   const handleDelete = async (taskId: string) => {
     try {
@@ -91,7 +84,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg w-[400px] space-y-4">
             <h3 className="text-xl font-semibold">Edit Task</h3>
             <div className="space-y-3">
