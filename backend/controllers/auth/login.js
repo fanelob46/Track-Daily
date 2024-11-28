@@ -16,6 +16,7 @@ export const loginUser = async (req, res) => {
       _id: user._id,
       firstName: user.firstName,
       email: user.email,
+      isAdmin: user.isAdmin,
     });
   } else {
     res.status(401).json({ success: false, message: "Invalid login details" });

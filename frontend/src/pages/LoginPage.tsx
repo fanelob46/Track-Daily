@@ -17,7 +17,13 @@ export const LoginPage: React.FC = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/dashboard");
+      if (userInfo.isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
+    } else {
+      console.log("No user logged in");
     }
   }, [navigate, userInfo]);
 
@@ -26,6 +32,12 @@ export const LoginPage: React.FC = () => {
       const { email, password } = userData;
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
+
+      if (res.isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/dashboard");
+      }
       navigate("/dashboard");
     } catch (err) {
       console.error(err);

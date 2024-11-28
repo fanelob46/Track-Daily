@@ -5,6 +5,7 @@ export type User = {
   lastName: string;
   email: string;
   secretKey?: string;
+  isAdmin: boolean;
 };
 
 export type CreateUserResponse = {
@@ -33,6 +34,7 @@ export const defaultUser = {
   firstName: "",
   lastName: "",
   email: "",
+  isAdmin: false,
 };
 
 export type LoginRequest = {

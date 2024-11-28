@@ -7,6 +7,7 @@ interface UserInfo {
   lastName: string;
   password: string;
   email: string;
+  isAdmin: boolean;
   token?: string; // Include token if applicable
 }
 
@@ -14,6 +15,7 @@ interface UserInfo {
 interface AuthState {
   userInfo: UserInfo | null;
 }
+
 
 const initialState: AuthState = {
   userInfo: localStorage.getItem("userInfo")
