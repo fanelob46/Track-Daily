@@ -1,6 +1,7 @@
 import { apiSlice } from "./apiSlice";
 
 const USERS_URL = "/api/users";
+const ADMIN_URL = "/api/";
 
 // Define the types for the request payloads and responses
 interface LoginRequest {
@@ -47,6 +48,26 @@ interface UpdateUserResponse {
   email: string;
 }
 
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  isAdmin: boolean;
+  createdAt: string;
+}
+
+interface GetAllUsersResponse {
+  data?: User[];
+  success: boolean;
+  message: string;
+}
+
+interface DeleteUserResponse {
+  success: boolean;
+  message: string;
+}
+
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginRequest>({
@@ -76,13 +97,28 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    getAllUsers: builder.query<GetAllUsersResponse, void>({
+      query: () => ({
+        url: `${ADMIN_URL}/admin`,
+        method: "GET",
+      }),
+    }),
+
+    deleteUser: builder.mutation<DeleteUserResponse, string>({
+      query: (id) => ({
+        url: `${ADMIN_URL}/admin/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-// Export hooks for the mutations
 export const {
   useLoginMutation,
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,
+  useGetAllUsersQuery,
+  useDeleteUserMutation,
 } = usersApiSlice;

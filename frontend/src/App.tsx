@@ -12,6 +12,7 @@ import { AdminDashboard } from "./pages/AdminDashboard";
 import AddTask from "./components/AddTask";
 import { PrivateRoute } from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
@@ -32,8 +33,14 @@ function App() {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/trash" element={<TrashPage />} />
               <Route path="/profile" element={<UserProfile />} />
-              <Route path="/admin" element={<AdminDashboard />} />
+
               <Route path="/add-task" element={<AddTask />} />
+            </Route>
+          </Route>
+
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="" element={<AdminLayout />}>
+              <Route path="/admin" element={<AdminDashboard />} />
             </Route>
           </Route>
         </Routes>
