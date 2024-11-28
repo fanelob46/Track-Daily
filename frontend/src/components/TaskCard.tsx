@@ -25,6 +25,15 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
+  const tagOptions = [
+    "Work",
+    "Travel",
+    "Shopping",
+    "Personal",
+    "Gym",
+    "O ther",
+  ];
+
   const handleDelete = async (taskId: string) => {
     try {
       await deleteTask(taskId);
@@ -34,7 +43,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({
       ...formData,
@@ -54,16 +65,16 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   return (
     <>
       {/* Task Card */}
-      <section className="border-2 border-red-500 w-[350px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
+      <section className="border-2 border-gray-300 shadow-lg w-[350px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
         <h3 className="text-3xl">{task.title}</h3>
-        <p>{task.tag}</p>
+        <p>{task.date}</p>
         <p className="text-justify">{task.description}</p>
         <div className="flex justify-between items-center">
-          <span className="border border-red-400 py-2 px-4 rounded-3xl text-white bg-red-400">
+          <span className="p-2 rounded-2xl min-w-[80px] bg-[#6444f4] text-white text-center hover:scale-[1.02]">
             {task.tag}
           </span>
 
-          <div className="flex justify-between items-center w-[35%] border-2 border-red-400 py-2 px-4">
+          <div className="flex justify-between items-center w-[35%] border-2 border-[#6444f4] py-2 px-4">
             {/* Edit Icon */}
             <CiEdit
               className="scale-150 hover:scale-[1.75] cursor-pointer"
@@ -106,14 +117,18 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 p-2 rounded"
               />
-              <input
-                type="text"
+              <select
                 name="tag"
                 value={formData.tag}
                 onChange={handleInputChange}
-                placeholder="Tag"
                 className="w-full border border-gray-300 p-2 rounded"
-              />
+              >
+                {tagOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="flex justify-end space-x-3">
               <button
