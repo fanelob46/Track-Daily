@@ -31,7 +31,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     "Shopping",
     "Personal",
     "Gym",
-    "O ther",
+    "Other",
   ];
 
   const handleDelete = async (taskId: string) => {

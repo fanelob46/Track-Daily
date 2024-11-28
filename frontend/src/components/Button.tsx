@@ -13,4 +13,4 @@ const Button = ({ name, buttonFunction }: ButtonsProps) => {
   );
 };
 
-export default Button
+export default Button;
