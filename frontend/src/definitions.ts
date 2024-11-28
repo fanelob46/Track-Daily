@@ -90,3 +90,11 @@ export type RegisterErrorResponse = {
     message: string;
   };
 };
+
+export interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  tag: string;
+}
