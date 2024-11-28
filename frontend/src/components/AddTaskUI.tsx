@@ -10,7 +10,7 @@ const AddTaskUI = () => {
 
   }
   return (
-    <div className="w-[70%] h-[60vh] space-y-4">
+    <div className="w-[1000px] h-[60vh] space-y-4 ">
       <div className="bg-gray-50 p-4 flex flex-col justify-center items-center space-y-2 rounded-lg h-full">
         <img className="" src="emptyy.png" alt="" />
         <p className="text-gray-500">You don't have any tasks assigned</p>

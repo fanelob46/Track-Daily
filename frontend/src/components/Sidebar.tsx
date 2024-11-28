@@ -44,28 +44,17 @@ export default function Sidebar() {
               <IoTrashBin className="text-gray-500 font-bold size-6" />
               <p>Trash</p>
             </a>
-            <a
-              href="/trash"
-              className="hover:font-semibold flex items-center gap-5"
-            >
-              <IoTrashBin className="text-gray-500 font-bold size-6" />
-              <p>Trash</p>
-            </a>
+           
           </div>
         </div>
         <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
-          <a href="#" className="hover:font-semibold flex items-center gap-5">
-            <IoMdSettings />
-            </a>
+          
           <a href="#" className="hover:font-semibold flex items-center gap-5">
             <IoSettingsOutline />
             <p>Settings</p>
           </a>
           <Logout />
-          <a href="#" className="hover:font-semibold flex items-center gap-5">
-            <IoIosLogOut />
-            <p>Logout</p>
-          </a>
+          
         </div>
         <div className="bg-[var(--primary-color)] p-5">
           <div className="flex items-center bg-[var(--secondary-color)] p-4 justify-between w-[50%]">

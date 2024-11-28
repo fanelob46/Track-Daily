@@ -19,11 +19,10 @@ export const UserDashboard = () => {
   }, [fetchTasks]);
 
   // Limit the tasks displayed to 4
-  const limitedTasks = tasks.slice(0, 4);
+  const limitedTasks = tasks.slice(0, 6);
 
   return (
-    <div className="p-10">
-    
+    <div className="p-14">
       <div className="flex justify-between">
         <UserInfo />
         <FilterDropdown />
@@ -31,13 +30,9 @@ export const UserDashboard = () => {
 
       {/* Main content section */}
       <div className="flex justify-between pt-6 h-[70vh]">
-        <div className="grid grid-cols-2 gap-10 px-10 py-10">
-          
+        <div className="grid grid-cols-3 gap-10  py-10 ">
           {tasks.length > 0 ? (
-            limitedTasks.map((task) => <TaskCard key={task._id} task={task} 
-            />
-          )
-            
+            limitedTasks.map((task) => <TaskCard key={task._id} task={task} />)
           ) : (
             <AddTaskUI />
           )}
