@@ -26,14 +26,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
-  const tagOptions = [
-    "Work",
-    "Travel",
-    "Shopping",
-    "Personal",
-    "Gym",
-    "O ther",
-  ];
+  const tagOptions = ["Work", "Travel", "Shopping", "Personal", "Gym", "Other"];
 
   const handleDelete = async (taskId: string) => {
     try {
@@ -67,7 +60,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     <>
    
       {/* Task Card */}
-      <section className="border-2 border-gray-300 shadow-lg w-[350px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
+      <section className="border-2 border-gray-300 shadow-lg w-[270px] sm:w-[250px] md:w-[300px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
         <h3 className="text-3xl">{task.title}</h3>
         <p>{task.date}</p>
         <p className="text-justify">{task.description}</p>
@@ -93,7 +86,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg w-[400px] space-y-4">
             <h3 className="text-xl font-semibold">Edit Task</h3>
             <div className="space-y-3">

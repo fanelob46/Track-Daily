@@ -16,8 +16,8 @@ const Logout = () => {
       if (userInfo) {
         await logoutApiCall().unwrap();
         dispatch(logout());
-        navigate("/");
       }
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
