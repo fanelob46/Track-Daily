@@ -1,160 +1,121 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ToggleSwitch } from "flowbite-react";
-import { UserFormData } from "../definitions";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ToggleSwitch } from 'flowbite-react';
+import { UserFormData } from '../definitions';
 
 type AuthFormProps = {
   name: string;
-  type: "signup" | "login" | "edit";
+  type: 'signup' | 'login' | 'edit';
   submitFunction: (userData: UserFormData) => Promise<void>;
   error: string;
+  initialValues?: UserFormData; // Add this prop
 };
 
-const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
+const AuthForm = ({ name, type, submitFunction, error, initialValues }: AuthFormProps) => {
+  const [formData, setFormData] = useState<UserFormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    isAdmin: false,
+    secretKey: '',
+  });
+
   const [isEditable, setIsEditable] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleEditToggle = () => {
-    if (type === "edit") {
-      setIsEditable((prev) => !prev);
+  useEffect(() => {
+    if (initialValues) {
+      setFormData(initialValues);
     }
-  };
+  }, [initialValues]);
 
-  console.log("error  ", error);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      firstName: formData.get("firstName")?.toString() || "",
-      lastName: formData.get("lastName")?.toString() || "",
-      email: formData.get("email")?.toString() || "",
-      password: formData.get("password")?.toString() || "",
-      confirmPassword: formData.get("confirmPassword")?.toString() || "",
-      isAdmin: isAdmin,
-      secretKey: isAdmin
-        ? formData.get("secretKey")?.toString() || ""
-        : undefined,
-    };
-
-    console.log(data);
-
     try {
-      await submitFunction(data);
+      await submitFunction(formData);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error('Error submitting form:', error);
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex border flex-col py-4 px-10  w-full max-w-[550px] mx-auto"
+      className="flex flex-col py-4 px-10 w-full max-w-[550px] mx-auto"
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
 
-      {type === "signup" && (
-        <p className="my-4">
-          Already have an account?{" "}
-          <Link to="/login" className="underline">
-            Login
-          </Link>
-        </p>
-      )}
-      {type === "login" && (
-        <p className="my-4">
-          New here?{" "}
-          <Link to="/signup" className="underline">
-            Sign Up{" "}
-          </Link>
-        </p>
-      )}
-
-      {(type === "signup" || type === "edit") && (
-        <div className="flex flex-col lg:flex-row justify-between ">
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            className="inputStyles lg:w-[48%]"
-            placeholder="First Name"
-            disabled={type === "edit" && !isEditable}
-          />
-
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            className="inputStyles lg:w-[48%]"
-            placeholder="Last Name"
-            disabled={type === "edit" && !isEditable}
-          />
-        </div>
-      )}
+      <div className="flex flex-col lg:flex-row justify-between">
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleInputChange}
+          placeholder="First Name"
+          className="inputStyles lg:w-[48%]"
+          disabled={type === 'edit' && !isEditable}
+        />
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleInputChange}
+          placeholder="Last Name"
+          className="inputStyles lg:w-[48%]"
+          disabled={type === 'edit' && !isEditable}
+        />
+      </div>
 
       <input
         type="email"
-        id="email"
         name="email"
+        value={formData.email}
+        onChange={handleInputChange}
         placeholder="Email Address"
-        disabled={type === "edit" && !isEditable}
+        className="inputStyles"
+        disabled={type === 'edit' && !isEditable}
       />
-
-      {type === "signup" && (
-        <div className="my-1">
-          <ToggleSwitch
-            checked={isAdmin}
-            label="Sign up as Admin"
-            onChange={setIsAdmin}
-          />
-        </div>
-      )}
-
-      {isAdmin && (
-        <input
-          type="text"
-          id="secretKey"
-          name="secretKey"
-          className="inputStyles"
-          placeholder="Secret Key"
-        />
-      )}
 
       <input
         type="password"
-        id="password"
         name="password"
+        value={formData.password}
+        onChange={handleInputChange}
         placeholder="Enter your password"
-        disabled={type === "edit" && !isEditable}
+        className="inputStyles"
+        disabled={type === 'edit' && !isEditable}
       />
 
-      {(type === "signup" || type === "edit") && (
-        <>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            disabled={type === "edit" && !isEditable}
-          />
-        </>
-      )}
+      <input
+        type="password"
+        name="confirmPassword"
+        value={formData.confirmPassword}
+        onChange={handleInputChange}
+        placeholder="Confirm your password"
+        className="inputStyles"
+        disabled={type === 'edit' && !isEditable}
+      />
 
       <p className="text-red-400">{error}</p>
 
       <button
-        className="buttonStyle my-5"
         type="submit"
-        onClick={type === "edit" ? handleEditToggle : undefined}
+        className="buttonStyle my-5"
+        onClick={type === 'edit' ? () => setIsEditable(!isEditable) : undefined}
       >
-        {type === "signup"
-          ? "Sign-Up"
-          : type === "login"
-          ? "Login"
+        {type === 'signup'
+          ? 'Sign Up'
+          : type === 'login'
+          ? 'Login'
           : isEditable
-          ? "Save"
-          : "Edit"}
+          ? 'Save'
+          : 'Edit'}
       </button>
     </form>
   );
