@@ -54,7 +54,7 @@ interface UpdateUserResponse {
 }
 
 interface User {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -108,6 +108,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${ADMIN_URL}/admin`,
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
 
     deleteUser: builder.mutation<DeleteUserResponse, string>({
@@ -115,6 +116,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${ADMIN_URL}/admin/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
