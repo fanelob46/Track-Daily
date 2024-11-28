@@ -5,7 +5,6 @@ import {
   MdLightMode,
 } from "react-icons/md";
 import { IoSettingsOutline, IoTrashBin } from "react-icons/io5";
-import { IoIosLogOut, IoMdSettings } from "react-icons/io";
 import { FaRegMoon } from "react-icons/fa";
 import Logout from "./Logout";
 import { Link } from "react-router-dom";
