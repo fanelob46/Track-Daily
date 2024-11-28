@@ -12,7 +12,9 @@ export const TrashPage = () => {
     };
     loadTask();
   }, [fetchTasks]);
-  const deleteAllTasks = () => {};
+  const deleteAllTasks = () => {
+    
+  };
   return (
     <div className="space-y-10 ">
       <div

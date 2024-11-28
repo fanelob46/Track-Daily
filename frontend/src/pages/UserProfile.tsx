@@ -7,7 +7,6 @@ import { useUpdateUserMutation } from "../slices/userApiSlice";
 import { RootState } from "../store";
 import Button from "../components/Button";
 
-
 export const UserProfile = () => {
   const { userInfo } = useSelector((state: RootState) => state.auth);
   const [firstName, setFirstName] = useState(userInfo?.firstName || "");
@@ -22,12 +21,6 @@ export const UserProfile = () => {
   const dispatch = useDispatch();
 
   const [updateProfile] = useUpdateUserMutation();
-
-  // useEffect(() => {
-  //   setFirstName(userInfo.firstName);
-  //   setLastName(userInfo.lastName);
-  //   setEmail(userInfo.email);
-  // }, [userInfo.setFirstName, userInfo.setLastName, userInfo.setEmail]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
