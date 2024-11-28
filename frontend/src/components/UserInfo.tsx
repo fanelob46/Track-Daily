@@ -1,6 +1,10 @@
 // import React from "react";
 
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
+
 const UserInfo = () => {
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   const getCurrentDate = () => {
     const date = new Date();
 
@@ -19,11 +23,10 @@ const UserInfo = () => {
   return (
     <div className="p-6 w-[30%] space-y-2">
       <div className="flex items-center text-xl gap-2 font-semibold">
-      <p>Hello, {"username"}!</p>
-      <img
-      src="wave.png"
-      className="w-[6%]"
-      />
+        <p>
+          Hello, {userInfo?.firstName} {userInfo?.lastName}!
+        </p>
+        <img src="wave.png" className="w-[6%]" />
       </div>
       <p className="text-gray-500 text-md">Today, {getCurrentDate()}</p>
     </div>

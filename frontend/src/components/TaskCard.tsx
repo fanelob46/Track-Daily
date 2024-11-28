@@ -25,6 +25,15 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
+  const tagOptions = [
+    "Work",
+    "Travel",
+    "Shopping",
+    "Personal",
+    "Gym",
+    "O ther",
+  ];
+
   const handleDelete = async (taskId: string) => {
     try {
       await deleteTask(taskId);
@@ -34,7 +43,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({
       ...formData,
@@ -59,7 +70,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         <p>{task.date}</p>
         <p className="text-justify">{task.description}</p>
         <div className="flex justify-between items-center">
-          <span className="p-2 rounded-2xl min-w-[80px] bg-[#6444f4] text-white text-center hover:scale-[1.02">
+          <span className="p-2 rounded-2xl min-w-[80px] bg-[#6444f4] text-white text-center hover:scale-[1.02]">
             {task.tag}
           </span>
 
@@ -106,14 +117,18 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
                 onChange={handleInputChange}
                 className="w-full border border-gray-300 p-2 rounded"
               />
-              <input
-                type="text"
+              <select
                 name="tag"
                 value={formData.tag}
                 onChange={handleInputChange}
-                placeholder="Tag"
                 className="w-full border border-gray-300 p-2 rounded"
-              />
+              >
+                {tagOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="flex justify-end space-x-3">
               <button
