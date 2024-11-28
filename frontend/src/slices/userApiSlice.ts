@@ -38,15 +38,19 @@ interface RegisterResponse {
 }
 
 interface UpdateUserRequest {
-  name?: string;
+  firstName?: string;
+  lastName?: string
   email?: string;
   password?: string;
 }
 
 interface UpdateUserResponse {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
+  password: string;
   email: string;
+  isAdmin: boolean;
 }
 
 interface User {

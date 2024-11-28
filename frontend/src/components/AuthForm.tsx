@@ -48,7 +48,7 @@ const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex border flex-col py-4 px-10  w-full max-w-[550px] mx-auto"
+      className="flex border flex-col py-4 px-10 w-full max-w-[550px] mx-auto"
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
 

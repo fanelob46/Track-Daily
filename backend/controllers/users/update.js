@@ -3,8 +3,7 @@ import User from "../../models/userModel.js";
 import router from "../../routes/userRoutes.js";
 
 const updateUserProfile = asyncHandler(async (req, res) => {
-    const {id} = req.body
-    const user = await User.findById(id);
+    const user = await User.findById(req.user._id);
 
     if (user) {
         user.firstName = req.body.firstName || user.firstName;

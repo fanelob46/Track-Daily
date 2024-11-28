@@ -26,7 +26,14 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
-  const tagOptions = ["Work", "Travel", "Shopping", "Personal", "Gym", "Other"];
+  const tagOptions = [
+    "Work",
+    "Travel",
+    "Shopping",
+    "Personal",
+    "Gym",
+    "Other",
+  ];
 
   const handleDelete = async (taskId: string) => {
     try {
