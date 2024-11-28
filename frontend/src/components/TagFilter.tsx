@@ -13,7 +13,21 @@ const tags: Tag[] = [
 ];
 
 const TagFilter: React.FC = () => {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  // Use array for multiple selections or string for single selection
+  const [selectedTag, setSelectedTag] = useState<string | null>(null); // Single tag selection
+  
+  // If you want to handle multiple tag selection, uncomment the next line:
+  // const [selectedTags, setSelectedTags] = useState<string[]>([]); // Multiple tag selection
+
+  const handleTagClick = (tag: string) => {
+    // For single tag selection:
+    setSelectedTag(selectedTag === tag ? null : tag);
+
+    // For multiple tag selection (if you want to support it):
+    // setSelectedTags(prevTags => 
+    //   prevTags.includes(tag) ? prevTags.filter(t => t !== tag) : [...prevTags, tag]
+    // );
+  };
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg h-[25vh] flex flex-col justify-center">
@@ -28,10 +42,11 @@ const TagFilter: React.FC = () => {
         {tags.map((tag) => (
           <button
             key={tag.label}
+            aria-pressed={selectedTag === tag.label}  // For accessibility
             className={`px-4 py-2 rounded text-white ${tag.color} ${
               selectedTag === tag.label ? 'ring-2 ring-offset-2 ring-gray-400' : ''
-            }`}
-            onClick={() => setSelectedTag(tag.label)}
+            } hover:opacity-90 transition`}
+            onClick={() => handleTagClick(tag.label)}  // Handle click to toggle selection
           >
             {tag.label}
           </button>
