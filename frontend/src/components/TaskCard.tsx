@@ -2,7 +2,6 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { useTaskStore } from "../../store/Task";
 import { useState } from "react";
-import UserInfo from "./UserInfo";
 
 interface Task {
   _id: string;
@@ -26,14 +25,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     tag: task.tag,
   });
 
-  const tagOptions = [
-    "Work",
-    "Travel",
-    "Shopping",
-    "Personal",
-    "Gym",
-    "Other",
-  ];
+  const tagOptions = ["Work", "Travel", "Shopping", "Personal", "Gym", "Other"];
 
   const handleDelete = async (taskId: string) => {
     try {
@@ -65,7 +57,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
   return (
     <>
-   
       {/* Task Card */}
       <section className="border-2 border-gray-300 shadow-lg w-[270px] sm:w-[250px] md:w-[300px] p-4 space-y-3 rounded-xl hover:scale-[1.01] cursor-default">
         <h3 className="text-3xl">{task.title}</h3>

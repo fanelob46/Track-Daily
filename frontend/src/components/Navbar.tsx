@@ -21,12 +21,29 @@ export default function Navbar() {
         ></input>
       </div>
       {userInfo ? (
-        <Link to="/profile" className="flex w-[100px] justify-between items-center">
-          <FaRegUserCircle className="scale-[2]" />
-          <div className="bg-gray-200 p-2 rounded-lg">
-            <p>{userInfo.firstName}</p>
-          </div>
-        </Link>
+        <>
+          {userInfo?.isAdmin ? (
+            <Link
+              to="/admin/profile"
+              className="flex w-[100px] justify-between items-center"
+            >
+              <FaRegUserCircle className="scale-[2]" />
+              <div className="bg-gray-200 p-2 rounded-lg">
+                <p>{userInfo.firstName}</p>
+              </div>
+            </Link>
+          ) : (
+            <Link
+              to="/admin/profile"
+              className="flex w-[100px] justify-between items-center"
+            >
+              <FaRegUserCircle className="scale-[2]" />
+              <div className="bg-gray-200 p-2 rounded-lg">
+                <p>{userInfo.firstName}</p>
+              </div>
+            </Link>
+          )}
+        </>
       ) : (
         <div className="flex gap-4">
           <Link to="/login">Register</Link>
