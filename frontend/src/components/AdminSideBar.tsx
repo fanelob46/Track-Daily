@@ -3,8 +3,6 @@ import { MdDashboardCustomize } from "react-icons/md";
 import Logout from "./Logout";
 import { TbUsersGroup } from "react-icons/tb";
 
-
-
 const AdminSideBar = () => {
   return (
     <div>
@@ -20,7 +18,6 @@ const AdminSideBar = () => {
             </a>
             </div>
           <div className="space-y-5 p-7 bg-[var(--primary-color)]  text-lg py-4">
-           
             <Logout />
           </div>
           
