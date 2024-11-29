@@ -26,14 +26,12 @@ export const TasksPage = () => {
 
   return (
     <div className="space-y-10">
-      
       <div className="py-5 flex justify-end pr-20">
         <button onClick={handleModalToggle}>
           <IoIosAddCircleOutline className="text-4xl" />
         </button>
       </div>
 
-      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 h-[70vh] overflow-y-scroll">
         {filteredTasks.map((task) => (
           <TaskCard key={task._id} task={task} />
