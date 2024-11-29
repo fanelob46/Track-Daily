@@ -26,7 +26,6 @@ export const TasksPage = () => {
 
   return (
     <div className="space-y-10">
-      
       <div className="py-5 flex justify-end pr-20">
         <button onClick={handleModalToggle}>
           <IoIosAddCircleOutline className="text-4xl" />

@@ -17,7 +17,7 @@ const MyCalendar: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-[100%]">
+    <div className="flex flex-col items-center">
       {/* <h1 className="text-2xl font-bold mb-4">React Calendar</h1> */}
     <div className="flex flex-col items-center">
       <Calendar
