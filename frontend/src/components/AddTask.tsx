@@ -98,7 +98,7 @@ const AddTask: React.FC<AddTaskProps> = ({ closeModal }) => {
               onChange={(date) =>
                 setNewTask((prev) => ({
                   ...prev,
-                  date: date?.toISOString() || "",
+                  date: date?.toDateString() || "",
                 }))
               }
               className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"

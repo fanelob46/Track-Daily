@@ -1,11 +1,9 @@
-import React, { FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { FormEvent } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlices";
 import { useUpdateUserMutation } from "../slices/userApiSlice";
 import { RootState } from "../store";
-import Button from "../components/Button";
 
 export const UserProfile = () => {
   const { userInfo } = useSelector((state: RootState) => state.auth);
@@ -17,7 +15,6 @@ export const UserProfile = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [updateProfile] = useUpdateUserMutation();
@@ -98,7 +95,8 @@ export const UserProfile = () => {
         <p className="text-red-400">{error}</p>
         <p className="text-green-400">{success}</p>
         <div>
-          <Button name={"Save"} buttonFunction={handleSubmit} />
+          {/* <Button name={"Save"} buttonFunction={handleSubmit} /> */}
+          <button className="buttonStyle w-full">Save</button>
         </div>
       </form>
     </div>

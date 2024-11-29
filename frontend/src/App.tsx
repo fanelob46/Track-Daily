@@ -33,8 +33,6 @@ function App() {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/trash" element={<TrashPage />} />
               <Route path="/profile" element={<UserProfile />} />
-
-              <Route path="/add-task" element={<AddTask />} />
             </Route>
           </Route>
 

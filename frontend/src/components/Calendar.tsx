@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; 
-import "./Calendar.css"; 
+import "react-calendar/dist/Calendar.css";
+import "./Calendar.css";
 
 const MyCalendar: React.FC = () => {
   const [date, setDate] = useState<Date>(new Date());
+  const handleDateChange = (newDate: Date) => {
+    setDate(newDate);
+  };
 
   return (
     <div className="flex flex-col items-center">
       {/* <h1 className="text-2xl font-bold mb-4">React Calendar</h1> */}
       <Calendar
-        onChange={setDate}
+        onChange={handleDateChange}
         value={date}
         className="bg-white rounded-lg"
       />
