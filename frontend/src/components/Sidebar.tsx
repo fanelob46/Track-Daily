@@ -3,7 +3,6 @@ import {
   MdOutlineAddTask,
   MdCalendarMonth,
 } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
 import Logout from "./Logout";
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";

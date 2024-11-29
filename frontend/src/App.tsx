@@ -7,24 +7,11 @@ import { TasksPage } from "./pages/TasksPage";
 import { CalendarPage } from "./pages/CalendarPage";
 import { UserProfile } from "./pages/UserProfile";
 import { AdminDashboard } from "./pages/AdminDashboard";
-import AddTask from "./components/AddTask";
-
 import { PrivateRoute } from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
-// import { useState, useEffect } from "react";
 
 function App() {
-  // const [theme, setTheme] = useState("light");
-
-  // useEffect(() => {
-  //   if (theme === "dark"){
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }, [theme]);
-
   return (
     <div className="bg-gray-100 dark:bg-[#434452] dark:text-white font-title">
       <Router>

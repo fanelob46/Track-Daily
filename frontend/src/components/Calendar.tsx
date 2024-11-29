@@ -32,6 +32,7 @@ const MyCalendar: React.FC = () => {
         </span>
       </p>
     </div>
+    </div>
   );
 };
 

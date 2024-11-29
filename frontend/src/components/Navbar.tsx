@@ -15,13 +15,6 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 };
 
   return (
-    <nav className="flex justify-between m-2 p-4 bg-[var(--primary-color)] items-center col-span-full rounded-full shadow-lg">
-      <div className="flex items-center gap-2 font-semibold pl-2">
-        <img src="/TrackDailyLogo.svg" className="w-7" />
-        <p>Track Daily</p>
-      </div>
-      <div className="flex items-center h-12 text-lg space-x-2 bg-[var(--secondary-color)] w-[30%] p-4 rounded-2xl shadow-lg">
-        <CiSearch className="size-6" />
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
       {userInfo?.isAdmin ? (
         <Link
@@ -40,7 +33,6 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           <h2 className="text-2xl">Track Daily </h2>
         </Link>
       )}
-
      
       <div className="flex items-center h-12 space-x-4 bg-[var(--secondary-color)] w-[30%] p-2 rounded-lg">
         <CiSearch />
@@ -48,6 +40,7 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           placeholder="search"
           className="border-none h-full w-full bg-[var(--secondary-color)]"
         ></input>
+        <input
           className="border-none h-full bg-[var(--secondary-color)] w-full"
           onChange={handleSearchChange} 
         />
@@ -58,7 +51,6 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       <CiBellOn className="border p-2 size-11 shadow-lg rounded-full"/>
       </div>
       <div className="border p-2 rounded-lg w-auto h-[6vh] shadow-lg">
-
       {/* User Profile or Auth Links */}
       {userInfo ? (
         <>
@@ -96,9 +88,10 @@ const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             Login
           </Link>
         </div>
-      )}
         </div>
+      )}
       </div>
+        </div>
     </nav>
   );
 }
