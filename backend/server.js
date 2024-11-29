@@ -16,7 +16,6 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-
 app.use(cors({ origin: "https://track-daily-rouge.vercel.app/" }));
 
 app.use("/api/users", userRoutes);
@@ -27,3 +26,5 @@ app.listen(5000, () => {
   connectDB();
   console.log("Server started at http://localhost:5000");
 });
+
+export default app;
