@@ -5,7 +5,7 @@ import AddTask from "../components/AddTask";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 export const TasksPage = () => {
-  const { tasks, fetchTasks } = useTaskStore();
+  const { tasks, searchQuery, fetchTasks } = useTaskStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -19,18 +19,23 @@ export const TasksPage = () => {
     setIsModalOpen((prev) => !prev);
   };
 
+  // Filter tasks based on search query from store
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="space-y-10">
-      {/* Add Task Button */}
+      
       <div className="py-5 flex justify-end pr-20">
         <button onClick={handleModalToggle}>
           <IoIosAddCircleOutline className="text-4xl" />
         </button>
       </div>
 
-      {/* Task Grid */}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 h-[70vh] overflow-y-scroll">
-        {tasks.map((task) => (
+        {filteredTasks.map((task) => (
           <TaskCard key={task._id} task={task} />
         ))}
       </div>

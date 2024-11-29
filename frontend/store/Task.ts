@@ -1,5 +1,3 @@
-// import { set } from "mongoose";
-// import { pid } from "process";
 import { create } from "zustand";
 
 interface Task {
@@ -12,7 +10,9 @@ interface Task {
 
 interface TaskStore {
   tasks: Task[];
+  searchQuery: string; // state for search query
   setTasks: (tasks: Task[]) => void;
+  setSearchQuery: (query: string) => void; // Action to update search query
   createTask: (
     newTask: Omit<Task, "_id">
   ) => Promise<{ success: boolean; message: string }>;
@@ -26,17 +26,18 @@ interface TaskStore {
 
 export const useTaskStore = create<TaskStore>((set) => ({
   tasks: [],
+  searchQuery: "", // Initialize search query as an empty string
   setTasks: (tasks) => set({ tasks }),
+  setSearchQuery: (query) => set({ searchQuery: query }), // Set search query
 
   createTask: async (newTask) => {
     if (
       !newTask.title ||
       !newTask.description ||
       !newTask.date ||
-      !newTask.tag 
-      
+      !newTask.tag
     ) {
-      return { success: false, message: "please enter all fields.." };
+      return { success: false, message: "Please enter all fields." };
     }
 
     const res = await fetch("http://localhost:3000/api/tasks", {
@@ -49,9 +50,9 @@ export const useTaskStore = create<TaskStore>((set) => ({
 
     const data = await res.json();
     if (!data?.data)
-      return { success: false, message: "failed to create task" };
+      return { success: false, message: "Failed to create task." };
     set((state) => ({ tasks: [...state.tasks, data.data] }));
-    return { success: true, message: "Task created successfully" };
+    return { success: true, message: "Task created successfully." };
   },
 
   fetchTasks: async () => {
