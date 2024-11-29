@@ -39,7 +39,7 @@ export const useTaskStore = create<TaskStore>((set) => ({
       return { success: false, message: "please enter all fields.." };
     }
 
-    const res = await fetch("api/tasks", {
+    const res = await fetch("http://localhost:3000/api/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

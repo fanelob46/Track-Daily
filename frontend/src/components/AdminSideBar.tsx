@@ -9,7 +9,7 @@ const AdminSideBar = () => {
         <div className="space-y-[2px]">
           <div className="space-y-5 p-7 h-[70vh] bg-[var(--primary-color)]  text-lg mt-[2px]">
             <a
-              href="/dashboard"
+              href="/admin"
               className="hover:font-semibold flex items-center gap-5"
             >
               <MdDashboardCustomize className="text-[var(--accent)] size-6" />

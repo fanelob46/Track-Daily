@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Button from "./Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useTaskStore } from "../../store/Task";
-import { Link, useNavigate } from "react-router-dom";
 
 interface Task {
   _id: string;
@@ -13,12 +11,14 @@ interface Task {
   tag: string;
 }
 
-const AddTask = () => {
+interface AddTaskProps {
+  closeModal: () => void;
+}
+
+const AddTask: React.FC<AddTaskProps> = ({ closeModal }) => {
   const { createTask } = useTaskStore();
-  const navigate = useNavigate()
 
   const [newTask, setNewTask] = useState<Omit<Task, "_id">>({
-    
     title: "",
     description: "",
     date: "",
@@ -29,13 +29,13 @@ const AddTask = () => {
     e.preventDefault();
 
     try {
-      const taskData = {
-        ...newTask,
-      };
+      const taskData = { ...newTask };
       await createTask(taskData);
-    } catch (error) {}
-    console.log(newTask);
-    navigate("/dashboard/tasks");
+      console.log("Task added:", newTask);
+      closeModal(); // Close the modal after adding the task
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
   const handleChange = (
@@ -48,7 +48,7 @@ const AddTask = () => {
   };
 
   return (
-    <section className="">
+    <section>
       <div className="border border-gray-400 p-6 max-w-md mx-auto bg-white shadow-lg rounded-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Add New Task</h2>
         <form className="px-10">
@@ -130,9 +130,12 @@ const AddTask = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-          {/* <Button name="Add Task" buttonFunction={handleAddTask} /> */}
-            <button onClick={handleAddTask}>Add TASK</button>
-          
+          <button
+            onClick={handleAddTask}
+            className="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+          >
+            Add Task
+          </button>
         </form>
       </div>
     </section>
