@@ -8,7 +8,7 @@ export const apiSlice = createApi({
   reducerPath: "api", // Optional, specifies the slice name in the store
   baseQuery,
   tagTypes: ["User"], // Specify types for cache invalidation and tagging
-  endpoints: (builder) => ({}), // Define endpoints here
+  endpoints: (_) => ({}), // Define endpoints here
 });
 
 // You can export the apiSlice reducer if needed for store configuration

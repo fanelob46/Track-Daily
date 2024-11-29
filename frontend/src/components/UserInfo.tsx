@@ -20,6 +20,8 @@ const UserInfo = () => {
     return `${weekday} ${day} ${month} ${year}`;
   };
 
+  console.log("user info ", userInfo);
+
   return (
     <div className="p-6 w-[30%] space-y-2">
       <div className="flex items-center text-xl gap-2 font-semibold w-full">

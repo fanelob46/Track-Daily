@@ -8,10 +8,23 @@ export default function Navbar() {
   const { userInfo } = useSelector((state: RootState) => state.auth);
   return (
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
-      <div className="flex items-center gap-2 font-semibold pl-2">
-        <img src="/TrackDailyLogo.svg" className="w-7" />
-        <p>Track Daily</p>
-      </div>
+      {userInfo?.isAdmin ? (
+        <Link
+          to="/admin"
+          className="h-full hover:scale-[1.02] flex items-center space-x-2"
+        >
+          <img src="TrackDailyLogo.svg" alt="" className="h-full scale-[0.7]" />
+          <h2 className="text-2xl">Track Daily </h2>
+        </Link>
+      ) : (
+        <Link
+          to="/dashboard"
+          className="h-full hover:scale-[1.02] flex items-center space-x-2"
+        >
+          <img src="TrackDailyLogo.svg" alt="" className="h-full scale-[0.7]" />
+          <h2 className="text-2xl">Track Daily </h2>
+        </Link>
+      )}
       {/* <div>Search</div> */}
       <div className="flex items-center h-12 space-x-4 bg-[var(--secondary-color)] w-[30%] p-2 rounded-lg">
         <CiSearch />
@@ -34,7 +47,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <Link
-              to="/admin/profile"
+              to="/profile"
               className="flex w-[100px] justify-between items-center"
             >
               <FaRegUserCircle className="scale-[2]" />
@@ -46,8 +59,12 @@ export default function Navbar() {
         </>
       ) : (
         <div className="flex gap-4">
-          <Link to="/login">Register</Link>
-          <Link to="/signup">Login</Link>
+          <Link to="/login" className="buttonStyle">
+            Register
+          </Link>
+          <Link to="/signup" className="buttonStyle">
+            Login
+          </Link>
         </div>
       )}
     </nav>

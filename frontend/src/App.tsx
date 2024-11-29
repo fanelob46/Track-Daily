@@ -9,7 +9,6 @@ import { TrashPage } from "./pages/TrashPage";
 import { UserProfile } from "./pages/UserProfile";
 import { AdminDashboard } from "./pages/AdminDashboard";
 
-import AddTask from "./components/AddTask";
 import { PrivateRoute } from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
