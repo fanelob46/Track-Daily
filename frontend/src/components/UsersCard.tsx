@@ -28,11 +28,13 @@ const UsersCard = () => {
   };
 
   return (
-    <>
-      <UserInfo />
-      <section>
+    <div className="p-2 space-y-4 mr-4">
+    <div className="bg-white rounded-xl p-2 shadow-lg">
+        <UserInfo />
+      </div>
+      <section className="p-2 bg-white rounded-xl shadow-lg">
         <h1 className="text-2xl font-semibold mb-4">All Users</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-10 overflow-y-scroll">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-y-scroll">
           {data.data.length === 0 ? (
             <p>No users available.</p>
           ) : (
@@ -61,7 +63,7 @@ const UsersCard = () => {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

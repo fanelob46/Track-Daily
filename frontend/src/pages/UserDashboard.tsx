@@ -37,7 +37,7 @@ export const UserDashboard = () => {
           </div>
           </div>
         {/* FilterDropdown, Calendar, and TagFilter */}
-        <div className="flex flex-col justify-between w-[30%] items-end space-y-[0px]">
+        <div className="flex flex-col justify-between w-[30%] items-end mx-2">
           <div className="w-full bg-white p-2 rounded-lg shadow-lg">
           <FilterDropdown />
           </div>
