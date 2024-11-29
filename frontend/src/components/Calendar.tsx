@@ -17,6 +17,8 @@ const MyCalendar: React.FC = () => {
   };
 
   return (
+    <div className="flex flex-col items-center w-full max-w-[100%]">
+      {/* <h1 className="text-2xl font-bold mb-4">React Calendar</h1> */}
     <div className="flex flex-col items-center">
       <Calendar
         onChange={(value) => handleDateChange(value as Date | Date[] | null)} // Typecast to ensure compatibility
