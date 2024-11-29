@@ -30,7 +30,7 @@ const TagFilter: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg h-[25vh] flex flex-col justify-center">
+    <div className="max-w-lg w-full p-6 bg-white shadow-md rounded-lg h-[25vh] flex flex-col justify-center">
       <h2 className="text-xl font-semibold mb-4">Tag Filter Card</h2>
       <p className="mb-4 text-gray-700">
         Select a tag to filter content. Selected tag: 
