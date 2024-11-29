@@ -3,9 +3,16 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import { useTaskStore } from "../../store/Task";
 
 export default function Navbar() {
   const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { setSearchQuery } = useTaskStore();
+
+const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setSearchQuery(e.target.value);
+};
+
   return (
     <nav className="flex justify-between p-4 bg-[var(--primary-color)] items-center col-span-full h-20">
       {userInfo?.isAdmin ? (
@@ -25,14 +32,18 @@ export default function Navbar() {
           <h2 className="text-2xl">Track Daily </h2>
         </Link>
       )}
-      {/* <div>Search</div> */}
+
+     
       <div className="flex items-center h-12 space-x-4 bg-[var(--secondary-color)] w-[30%] p-2 rounded-lg">
         <CiSearch />
         <input
           placeholder="search"
           className="border-none h-full bg-[var(--secondary-color)] w-full"
-        ></input>
+          onChange={handleSearchChange} 
+        />
       </div>
+
+      {/* User Profile or Auth Links */}
       {userInfo ? (
         <>
           {userInfo?.isAdmin ? (
