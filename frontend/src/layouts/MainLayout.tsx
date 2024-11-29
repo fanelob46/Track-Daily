@@ -8,8 +8,7 @@ const MainLayout: React.FC = () => {
       <Navbar />
       <Sidebar />
       <div
-        className=" col-span-14 p-10 h-[90vh] 
-      "
+        className=" col-span-14 p-2 h-[90vh]"
       >
         <Outlet />
       </div>

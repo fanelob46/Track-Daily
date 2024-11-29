@@ -20,28 +20,34 @@ export const UserDashboard = () => {
   const limitedTasks = tasks.slice(0, 8);
 
   return (
-    <div className="">
-      <div className="flex justify-between items-center border pr-10">
+    <div className="flex justify-between">
+      <div className="space-y-4 w-[65%]">
+      <div className="bg-white rounded-xl p-2 shadow-lg">
         <UserInfo />
-        <FilterDropdown />
       </div>
-
-      {/* Main content section */}
-      <div className="flex justify-between pt-6 h-[70vh]">
-        <div className="grid grid-cols-3 gap-10   border border-red-300 overflow-y-scroll">
-          {tasks.length > 0 ? (
-            limitedTasks.map((task) => <TaskCard key={task._id} task={task} />)
-          ) : (
-            <AddTaskUI />
-          )}
-        </div>
-
-        {/* Calendar and TagFilter */}
-        <div className="flex flex-col justify-between">
+        {/* Main content section */}
+          <div className="grid grid-cols-3 gap-10 overflow-y-scroll h-[70vh] bg-white shadow-lg p-2 rounded-lg my-2">
+            {tasks.length > 0 ? (
+              limitedTasks.map((task) => (
+                <TaskCard key={task._id} task={task} />
+              ))
+            ) : (
+              <AddTaskUI />
+            )}
+          </div>
+          </div>
+        {/* FilterDropdown, Calendar, and TagFilter */}
+        <div className="flex flex-col justify-between w-[30%] items-end space-y-[0px]">
+          <div className="w-full bg-white p-2 rounded-lg shadow-lg">
+          <FilterDropdown />
+          </div>
+          <div className="w-full bg-white p-2 rounded-3xl shadow-lg">
           <Calendar />
+          </div>
+          <div className="w-full">
           <TagFilter />
+          </div>
         </div>
-      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 
 
 .react-calendar {
-    @apply bg-[var(--primary-color)] rounded-lg p-4;
+    @apply bg-[var(--primary-color)] rounded-lg p-4 border-none w-full;
   }
   
   .react-calendar__tile {
-    @apply text-black hover:bg-[#6444f4] hover:text-white rounded-md;
+    @apply text-black hover:bg-[#6444f4] hover:text-white rounded-md text-lg;
   }
   
   .react-calendar__tile--active {

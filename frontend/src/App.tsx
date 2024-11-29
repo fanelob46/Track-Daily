@@ -5,17 +5,15 @@ import { LoginPage } from "./pages/LoginPage";
 import { UserDashboard } from "./pages/UserDashboard";
 import { TasksPage } from "./pages/TasksPage";
 import { CalendarPage } from "./pages/CalendarPage";
-import { TrashPage } from "./pages/TrashPage";
 import { UserProfile } from "./pages/UserProfile";
 import { AdminDashboard } from "./pages/AdminDashboard";
-
 import { PrivateRoute } from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
-    <div className="bg-gray-100 font-title">
+    <div className="bg-gray-100 dark:bg-[#434452] dark:text-white font-title">
       <Router>
         <Routes>
           {/* Public Routes */}
@@ -30,7 +28,6 @@ function App() {
               <Route path="/dashboard" element={<UserDashboard />} />
               <Route path="/dashboard/tasks" element={<TasksPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/trash" element={<TrashPage />} />
               <Route path="/profile" element={<UserProfile />} />
             </Route>
           </Route>
