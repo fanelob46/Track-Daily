@@ -48,7 +48,7 @@ Efficiently managing CRUD operations for different user roles.
 
 2. Install dependencies for both frontend and backend:
 ### For the backend
-  ```bash
+   ```bash
     cd backend
     npm install
 
