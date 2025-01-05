@@ -51,7 +51,7 @@ const EditTask = () => {
               placeholder="Task Title"
               value={editTask.title}
               onChange={handleChange}
-              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-[var(--accent)] focus:border-[var(--accent)]"
             />
           </div>
           <div className="mb-4">
@@ -67,7 +67,7 @@ const EditTask = () => {
               placeholder="Task Description"
               value={editTask.description}
               onChange={handleChange}
-              className="mt-1 w-full border-gray-300 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full border-gray-300 border rounded-md shadow-sm focus:ring-[var(--accent)] focus:border-[var(--accent)]"
               rows={4}
             ></textarea>
           </div>
@@ -86,7 +86,7 @@ const EditTask = () => {
                   date: date?.toISOString() || "",
                 }))
               }
-              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-[var(--accent)] focus:border-[var(--accent)]"
               placeholderText="Select a Date"
             />
           </div>
@@ -104,7 +104,7 @@ const EditTask = () => {
               placeholder="Task tag (e.g., Work, Personal)"
               value={editTask.tag}
               onChange={handleChange}
-              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-[var(--accent)] focus:border-[var(--accent)]"
             />
           </div>
           <div className="flex space-x-4">

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ToggleSwitch } from "flowbite-react";
 import { UserFormData } from "../definitions";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple, FaCheckSquare } from "react-icons/fa";
 
 type AuthFormProps = {
   name: string;
@@ -46,16 +48,17 @@ const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
   };
 
   return (
+    <div>
     <form
       onSubmit={handleSubmit}
-      className="flex border flex-col py-4 px-10 w-full max-w-[550px] mx-auto"
+      className="flex border shadow-lg flex-col py-4 px-10 w-full h-full justify-center max-w-[70%] mx-auto"
     >
       <h1 className="text-5xl my-8 text-center">{name}</h1>
 
       {type === "signup" && (
         <p className="my-4">
           Already have an account?{" "}
-          <Link to="/login" className="underline">
+          <Link to="/login" className="underline text-blue-600">
             Login
           </Link>
         </p>
@@ -140,9 +143,12 @@ const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
       )}
 
       <p className="text-red-400">{error}</p>
-
+      <div className="flex items-center space-x-2">
+      <FaCheckSquare />
+        <p>I agree to the <a href="#" className="text-[var(--accent)] underline">Terms & Conditions</a></p>
+      </div>
       <button
-        className="buttonStyle my-5"
+        className="buttonStyle my-5 w-full h-[5vh]"
         type="submit"
         onClick={type === "edit" ? handleEditToggle : undefined}
       >
@@ -154,7 +160,23 @@ const AuthForm = ({ name, type, submitFunction, error }: AuthFormProps) => {
           ? "Save"
           : "Edit"}
       </button>
+      <div className="flex justify-between text-gray-600 items-center space-x-4">
+        <div className="border-t-2 border-gray-300 w-[50%]"/>
+        <p>Or</p>
+        <hr className="border-t-2 border-gray-300 w-[50%]"/>
+      </div>
+      <div className="flex justify-between space-x-6 items-center py-4">
+      <a href="#" className="flex items-center space-x-4 border border-gray-300 p-2 shadow-lg w-[50%] justify-center">
+      <FcGoogle className="size-7" />
+      <p>Sign up with Google</p>
+      </a>
+      <a href="#" className="flex items-center space-x-4 border border-gray-300 p-2 shadow-lg w-[50%] justify-center">
+      <FaApple className="size-7" />
+      <p>Sign up with Apple</p>
+      </a>
+      </div>
     </form>
+    </div>
   );
 };
 

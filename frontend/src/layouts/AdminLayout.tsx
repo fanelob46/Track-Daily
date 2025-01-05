@@ -8,7 +8,7 @@ const AdminLayout = () => {
       <Navbar />
       <AdminSideBar />
       <div
-        className=" col-span-14 p-10 h-[90vh] 
+        className=" col-span-14 h-[90vh] 
       "
       >
         <Outlet />
