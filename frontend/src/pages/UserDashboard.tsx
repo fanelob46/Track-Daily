@@ -17,7 +17,7 @@ export const UserDashboard = () => {
   }, [fetchTasks]);
 
   // Limit the tasks displayed to 4
-  const limitedTasks = tasks.slice(0, 8);
+  const limitedTasks = tasks.slice(0, 6);
 
   return (
     <div className="">

@@ -12,6 +12,7 @@ import { AdminDashboard } from "./pages/AdminDashboard";
 import { PrivateRoute } from "./components/PrivateRoute";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import AddTask from "./components/AddTask";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/trash" element={<TrashPage />} />
               <Route path="/profile" element={<UserProfile />} />
+              <Route path="/add-task" element={<AddTask closeModal={function (): void {
+                throw new Error("Function not implemented.");
+              } } />}/>
             </Route>
           </Route>
 
